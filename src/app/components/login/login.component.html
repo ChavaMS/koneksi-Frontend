@@ -4,17 +4,33 @@
         <div class="col-md-7 col-12"></div>
         <div class="col-md-5 col-12 d-flex justify-content-md-center align-items-center min-vh-100">
             <div class="w-100 bg-light p-5 text-center k-border-form">
-                <form>
+
+                <div *ngIf="status == 'success'" class="alert alert-success">
+                    Bienvenido
+                </div>
+                <div *ngIf="status == 'error'" class="alert alert-danger">
+                    Error de inicio de sesión, verifica los datos e intentalo de nuevo.
+                </div>
+                <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" action="">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Correo</label>
-                        <input type="email" class="form-control" name="email" id="correoLogin" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="user.email"
+                            id="correoLogin" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            aria-describedby="emailHelp">
+                        <span *ngIf="!email.valid && email.touched">
+                            El email es obligatorio
+                        </span>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Contraseña</label>
-                        <input type="password" class="form-control" name="password" id="passLogin">
+                        <input type="password" class="form-control" name="password" #password="ngModel"
+                            [(ngModel)]="user.password" required id="passLogin">
+                        <span *ngIf="!password.valid && password.touched">
+                            El password es obligatorio
+                        </span>
                     </div>
                     <div class="d-block mb-3">
-                        <button type="submit" class="btn btn-dark">Ingresar</button>
+                        <button type="submit" class="btn btn-dark" [disabled]="!loginForm.form.valid">Ingresar</button>
                     </div>
                     <a href="#">¿No tienes una cuenta? Registrate</a>
                 </form>
