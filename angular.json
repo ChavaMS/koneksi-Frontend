@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "koneksi-Frontend"
+    }
+  },
+  "defaultProject": "koneksi-Frontend",
+  "cli": {
+    "analytics": "98fe2f8e-274e-4aa0-aade-67364daf5055"
+  }
 }
