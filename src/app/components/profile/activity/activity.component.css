@@ -1,0 +1,13 @@
+.k-carousel-inner {
+  object-fit: cover;
+  min-height: 262px;
+}
+
+.k-img-products {
+  min-height: 262px;
+}
+
+
+#descripcion{
+    min-height: 262px;
+}

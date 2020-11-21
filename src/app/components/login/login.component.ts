@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
-
+declare var particlesJS: any;
 
 @Component({
   selector: 'app-login',
@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
+    //SE CARGA EL FONDO DE PARTICULAS
+    particlesJS.load('particles-js', "assets/particles-json.json");
   }
 
 
