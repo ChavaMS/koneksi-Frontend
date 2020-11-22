@@ -14,7 +14,8 @@
         <!-------------------FORM VISTO DESDE ESCRITORIO--------------->
         <form class="k-FormFull form-inline my-2 my-lg-0">
           <div class="mx-md-auto w-50">
-            <input class="form-control mr-sm-2" style="width: 80%;" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control mr-sm-2" style="width: 70%;" type="search" placeholder="Search"
+              aria-label="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
           </div>
         </form>
@@ -26,31 +27,33 @@
           </div>
         </form>
       </div>
-        <!-------------------------------------------------------------->
+      <!-------------------------------------------------------------->
 
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active mt-1">
           <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item  mt-1">
+        <li *ngIf="!identity" [routerLink]="['/login']" class="nav-item  mt-1">
           <a class="nav-link" href="#">Ingresa</a>
         </li>
-        <li class="nav-item  mt-1">
-          <a class="nav-link" href="#">Registrate</a>
+        <li *ngIf="!identity" class="nav-item  mt-1">
+          <a class="nav-link" href="#">Regístrate</a>
         </li>
         <li class="nav-item  mt-1">
           <a class="nav-link" href="#">Contactanos</a>
         </li>
-        <li class="nav-item dropdown  dropleft">
+        <li *ngIf="identity" class="nav-item dropdown  dropleft">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <img class="k-avatar" src="../assets/img/user.png" alt="">
+            <img *ngIf="identity.image" class="k-avatar" src="{{url+'get-image-profile/'+identity.image}}" alt="">
+            <img *ngIf="!identity.image" class="k-avatar" src="../assets/img/user.png" alt="">
+            <span>{{identity.name}}</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Mi perfil</a>
-            <a class="dropdown-item" href="#">Configuración</a>
+            <a class="btn dropdown-item">Mi perfil</a>
+            <a class="btn dropdown-item">Configuración</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Cerrar sesión</a>
+            <a (click)="logout()" class="btn dropdown-item">Cerrar sesión</a>
           </div>
         </li>
       </ul>
@@ -59,6 +62,25 @@
   </nav>
 </div>
 
+<div class="container-fluid mt-5 h-100">
+  <!--CARGA AQUI LOS COMPONENTES DE LAS RUTAS-->
+  <router-outlet></router-outlet>
 
-<!--CARGA AQUI LOS COMPONENTES DE LAS RUTAS-->
-<router-outlet></router-outlet>
+  <footer class="mt-2 bg-dark">
+    <div class="row p-4 k-footer w-75 m-auto">
+      <div class="col-md-4 col-12 p-0">
+        <ul>
+          <li>Aviso de privacidad</li>
+          <li>Acerca de nosotros</li>
+          <li>Historia</li>
+        </ul>
+      </div>
+      <div class="col-md-4 col-12 p-3">
+          <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, accusamus?</p>
+      </div>
+      <div class="col-md-4 col-12 p-3">
+          <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, ipsum?</p>
+      </div>
+    </div>
+  </footer>
+</div>

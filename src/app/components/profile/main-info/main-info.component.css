@@ -1,0 +1,14 @@
+.k-profile-avatar {
+    width: 190px;
+    height: 190px;
+    border-radius: 100px;
+    overflow: hidden;
+    margin-right: 5px;
+    position: relative;
+    margin-top: -80px;
+    margin-left: 10px;
+  }
+  
+  .k-profile-name {
+    font-size: 25px;
+  }

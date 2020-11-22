@@ -1,3 +1,19 @@
+/*---------GENERAL--------*/
+html, body{
+    height: 100% !important;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  min-height: 40px;
+  color: white;
+}
+
+
 /*--------NAVBAR--------*/
 .k-navigation{
     padding: 0px !important;
