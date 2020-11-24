@@ -1,35 +1,47 @@
 <div class="mb-1">
     <button type="button" class="w-50 rounded-0 btn btn-dark" (click)="cambiarVista('des')">Descripción</button>
-    <button type="button" class="w-50 rounded-0 btn btn-dark" (click)="cambiarVista('pro')">Productos</button>
+    <button type="button" *ngIf="this.isUserProducts" class="w-50 rounded-0 btn btn-dark"
+        (click)="cambiarVista('pro')">{{ activity }}</button>
+
+    <div class="dropdown d-inline" *ngIf="this.isUserJobs">
+        <button class="w-50 rounded-0 btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ activity }}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <button *ngFor="let job of this.jobs; let i = index" (click)="cargarOficio(i)" class="dropdown-item">{{ job.jobs.name }}</button>
+        </div>
+    </div>
 </div>
 
+<!--------------------------------------------OFICIOS---------------------------------------------------------->
+<div class="text-center w-100 k-oficios-descr-container" *ngIf="this.isUserJobs">
+    <div *ngFor="let job of this.jobs; let i = index; let isFirst = first" id="{{ i }}"
+        class="k-desc d-none w-100">
+        <h2>{{ job.jobs.name }}</h2>
+        <p>{{ job.description }}</p>
+    </div>
+</div> 
+<!--------------------------------------------OFICIOS---------------------------------------------------------->
 
-<div id="productsUserProfile" class="carousel slide" data-ride="carousel">
+<!---------------------------------------CARUSEL DE PRODUCTOS-------------------------------------------------->
+<div id="productsUserProfile" *ngIf="this.isUserProducts" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#productsUserProfile" data-slide-to="0" class="active"></li>
-        <li data-target="#productsUserProfile" data-slide-to="1"></li>
-        <li data-target="#productsUserProfile" data-slide-to="2"></li>
+        <li data-target="#productsUserProfile" *ngFor="let item of this.products;let i = index; let isFirst = first"
+            [ngClass]="{active:isFirst}" [attr.data-slide-to]="i"></li>
     </ol>
+
     <div class="carousel-inner k-carousel-inner">
-        <div class="carousel-item active">
-            <img src="../../../assets/img/banner.jpg" class="k-img-products d-block w-100 h-100" alt="...">
+        <div class="carousel-item" *ngFor="let item of this.products;let index = index;let isFirst = first"
+            [ngClass]="{active:isFirst}">
+            <img *ngIf="!item.image" src="../../../assets/img/banner.jpg" class="k-img-products d-block w-100 h-100"
+                alt="...">
+            <img *ngIf="item.image" src="{{url+'get-product-image/'+item.image}}"
+                class="k-img-products d-block w-100 h-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="../../../assets/img/banner.jpg" class="d-block w-100 k-img-products" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="../../../assets/img/banner.jpg" class="d-block w-100 k-img-products" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <h5>{{i}}</h5>
+                <h5>{{item.name}}</h5>
+                <p>{{item.description}}</p>
             </div>
         </div>
     </div>
@@ -42,6 +54,7 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+<!---------------------------------------CARUSEL DE PRODUCTOS-------------------------------------------------->
 
 <div class="text-center d-none" id="descripcion">
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quasi voluptates

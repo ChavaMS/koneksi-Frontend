@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { User } from 'src/app/models/user';
+import { GLOBAL } from '../../../services/global';
 
 @Component({
   selector: 'app-main-info',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainInfoComponent implements OnInit {
 
-  constructor() { }
+  @Input() user: User;
+  @Input() isUserProducts: boolean;
+  @Input() iUserService: boolean;
+  @Input() isUserJob: boolean;
+
+  public url: String;
+
+  constructor() { 
+    this.url = GLOBAL.url;
+  }
 
   ngOnInit(): void {
+  
   }
 
 

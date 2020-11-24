@@ -1,10 +1,11 @@
 <img class="img-fluid" src="../../../../assets/img/banner.jpg" alt="">
 <div class="row">
     <div class="col-md-4 text-center">
-        <img src="../../../../assets/img/user.png" class="k-profile-avatar" alt="">
+        <img *ngIf="!this.user.image" src="../../../../assets/img/user.png" class="k-profile-avatar" alt="">
+        <img *ngIf="this.user.image" src="{{url+'get-image-profile/'+this.user.image}}" class="k-profile-avatar" alt="">
     </div>
     <div class="text-center col-md-6 p-0 mt-4">
-        <p class="k-profile-name">Salvador Medina Santos</p>
+        <p class="k-profile-name">{{this.user.name + " " + this.user.surname}}</p>
     </div>
     <div class="col-md-2 mt-4 text-center">
         <div class="m-1">

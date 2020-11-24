@@ -1,3 +1,5 @@
-<agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-</agm-map>
+<div *ngIf="lat && lon">
+    <agm-map [zoom]="14" [latitude]="+this.lat" [longitude]="+this.lon">
+        <agm-marker [latitude]="+this.lat" [longitude]="+this.lon"></agm-marker>
+    </agm-map>
+</div>

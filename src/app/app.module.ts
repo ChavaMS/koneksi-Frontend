@@ -4,6 +4,7 @@ import { routing, appRoutingProviders } from './app.routing';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 
+//Componentes
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -11,7 +12,8 @@ import { UserProductsComponent } from './components/user-products/user-products.
 import { UserServiceComponent } from './components/user-service/user-service.component';
 
 //Servicios
-import { UserService } from './services/user.service';
+import { UserServices } from './services/user.service';
+import { InteractionsService } from './services/interactions.service';
 
 //MAPS
 import { AgmCoreModule } from '@agm/core';
@@ -20,6 +22,7 @@ import { LocationComponent } from './components/profile/location/location.compon
 import { ActivityComponent } from './components/profile/activity/activity.component';
 import { CommentsComponent } from './components/profile/comments/comments.component';
 import { UserJobsComponent } from './components/user-jobs/user-jobs.component';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +48,8 @@ import { UserJobsComponent } from './components/user-jobs/user-jobs.component';
   ],
   providers: [
     appRoutingProviders,
-    UserService
+    UserServices,
+    InteractionsService
   ],
   bootstrap: [AppComponent]
 })

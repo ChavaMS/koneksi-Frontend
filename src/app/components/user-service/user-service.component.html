@@ -5,7 +5,9 @@
             <div class="k-top">
 
                 <!-----------------------------BANNER--NOMBRE--RATING---------------------------------------->
-                <app-main-info></app-main-info>
+                <div *ngIf="this.user">
+                    <app-main-info [isUserService]="this.isUserService" [user]="this.user"></app-main-info>
+                </div>
                 <!-----------------------------BANNER--NOMBRE--RATING---------------------------------------->
 
             </div>
@@ -14,14 +16,18 @@
                     <div class="col-md-6">
 
                         <!-----------------------------MAPA---------------------------------------------------------->
-                        <app-location></app-location>
+                        <div *ngIf="this.user">
+                            <app-location [lat]="+this.user.lat" [lon]="+this.user.lon"></app-location>
+                        </div>
                         <!-----------------------------MAPA---------------------------------------------------------->
 
                     </div>
                     <div class="col-md-6">
 
                         <!-----------------------------CARUSEL---DESCRIPCION---------------------------------->
-                        <app-activity></app-activity>
+                        <div *ngIf="this.userService">
+                            <app-activity [isUserService]="this.isUserService" [service]="this.userService"></app-activity>
+                        </div>
                         <!-----------------------------CARUSEL---DESCRIPCION---------------------------------->
 
                     </div>
@@ -29,7 +35,9 @@
             </div>
             <div class="k-bottom">
                 <!-----------------------------COMENTARIOS-------------------------------------------------->
-                <app-comments></app-comments>
+                <div *ngIf="this.userService">
+                    <app-comments [isUserService]="this.isUserService" [receiver]="this.user._id"></app-comments>
+                </div>
                 <!-----------------------------COMENTARIOS-------------------------------------------------->
             </div>
         </div>
