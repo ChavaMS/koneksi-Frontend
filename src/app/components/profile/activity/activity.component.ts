@@ -3,7 +3,7 @@ import { UserJobs } from 'src/app/models/userJobs';
 import { UserProducts } from 'src/app/models/userProducts';
 import { UserService } from 'src/app/models/userService';
 import { GLOBAL } from '../../../services/global';
-
+ 
 @Component({
   selector: 'app-activity',
   templateUrl: './activity.component.html',

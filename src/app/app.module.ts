@@ -18,6 +18,8 @@ import { LocationComponent } from './components/profile/location/location.compon
 import { ActivityComponent } from './components/profile/activity/activity.component';
 import { CommentsComponent } from './components/profile/comments/comments.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { UserJobsComponent } from './components/user-jobs/user-jobs.component';
+
 
 //Servicios
 import { UserServices } from './services/user.service';
@@ -35,6 +37,7 @@ import { AgmCoreModule } from '@agm/core';
     RegisterComponent,
     UserProductsComponent,
     UserServiceComponent,
+    UserJobsComponent,
     MainInfoComponent,
     LocationComponent,
     ActivityComponent,
