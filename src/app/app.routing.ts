@@ -7,6 +7,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserProductsComponent } from './components/user-products/user-products.component';
 import { UserServiceComponent } from './components/user-service/user-service.component';
 import { UserJobsComponent } from './components/user-jobs/user-jobs.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 const appRoutes: Routes = [
     { path: '', component: LoginComponent },
@@ -14,7 +15,8 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'user-products/:id', component: UserProductsComponent },
     { path: 'user-service/:id', component: UserServiceComponent },
-    { path: 'user-jobs/:id', component: UserJobsComponent }
+    { path: 'user-jobs/:id', component: UserJobsComponent },
+    { path: 'contact', component: ContactComponent }
 ]
 
 export const appRoutingProviders: any[] = [];

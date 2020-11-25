@@ -35,7 +35,7 @@ export class CommentsComponent implements OnInit {
   public url: string;
   public numbers;
   public sinComentarios: boolean;
-
+  
   constructor(
     private _InteractionsService: InteractionsService,
     private _UserService: UserServices
@@ -98,6 +98,8 @@ export class CommentsComponent implements OnInit {
       if (response) {
         this.status = 'success';
         form.reset();
+
+        this.getComments(1);
       }
     }, error => {
       if (error) {
