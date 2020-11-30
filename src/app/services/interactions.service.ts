@@ -30,7 +30,20 @@ export class InteractionsService {
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
         return this._http.post(this.url + 'getComment/' + page, params, { headers: headers });
+    }
 
+    getRating(id): Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+        return this._http.post(this.url + 'getRating/' + id, { headers: headers });
+    }
+
+    getDistance(distance): Observable<any> {
+        let params = JSON.stringify(distance);
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+        return this._http.post(this.url + 'getDistance',params, { headers: headers });
     }
     
 }

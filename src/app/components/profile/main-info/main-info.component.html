@@ -9,11 +9,19 @@
     </div>
     <div class="col-md-2 mt-4 text-center">
         <div class="m-1">
-            <i id="e1" class="fas fa-star" (onmouseover)="efecto(1)"></i>
+            <div class="m-1" *ngIf="this.rating">
+                <div class="d-inline" *ngFor="let valor of this.ratingMax; let i = index">
+                    <i  [ngClass]="{'fas fa-star': i < this.rating.promedio}"   class="" ></i>
+                </div>
+                <div class="d-inline" *ngFor="let valor of this.ratingMax; let i = index">
+                    <i  [ngClass]="{'far fa-star': i >= this.rating.promedio}"   class="" ></i>
+                </div>
+            </div>
+<!--             <i id="e1" class="fas fa-star" (onmouseover)="efecto(1)"></i>
             <i id="e2" class="fas fa-star" (onmouseover)="efecto(2)"></i>
             <i id="e3" class="fas fa-star" (onmouseover)="efecto(3)"></i>
             <i id="e4" class="fas fa-star" (onmouseover)="efecto(4)"></i>
-            <i id="e5" class="far fa-star" (onmouseover)="efecto(5)"></i>
+            <i id="e5" class="far fa-star" (onmouseover)="efecto(5)"></i> -->
         </div>
     </div>
 </div>

@@ -17,12 +17,41 @@ export class UserServices {
         this.url = GLOBAL.url;
     }
 
-    /* register(user: User): Observable<any> {
-        let params = JSON.stringify(user);
-        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    updateCoverPage(email: string, file: File): Observable<any> {
+        const fd = new FormData();
+        fd.append('email', email);
+        fd.append('coverPage', file);
 
-        return this._http.post(this.url + 'register', params, { headers: headers });
-    } */
+
+
+        //let params = JSON.stringify(user);
+        //let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        //console.log(fd);
+        
+        return this._http.post(this.url + 'updateCoverPage', fd);
+    } 
+
+    registerUser(user: User, addres: Array<string> ,file: File): Observable<any> {
+        const fd = new FormData();
+        fd.append('name', user.name);
+        fd.append('surname', user.surname);
+        fd.append('email', user.email);
+        fd.append('password', user.password);
+        fd.append('country', user.country);
+        fd.append('state', user.state);
+        fd.append('city', user.city);
+        fd.append('image', file);
+        fd.append('suburb', addres[0]);
+        fd.append('street', addres[1]);
+        fd.append('cp', addres[2]);
+
+
+        //let params = JSON.stringify(user);
+        //let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        //console.log(fd);
+        
+        return this._http.post(this.url + 'saveUser', fd);
+    } 
 
     signup(user, gettoken = null): Observable<any> {
         if (gettoken != null) {

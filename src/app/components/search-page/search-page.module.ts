@@ -9,15 +9,21 @@ import { SearchPageRoutingModule } from './search-page-routing.component';
 
 //Componentes
 import { MainComponent } from './main/main.component';
-
+import { JobsResultComponent } from './jobs-result/jobs-result.component';
+import { ProductsResultComponent } from './products-result/products-result.component';
+import { ServicesResultComponent } from './services-result/services-result.component';
 
 //Servicios
 import { UserServices } from '../../services/user.service';
+
 //import { UserGuard } from '../../services/user.guard';
 
 @NgModule({
     declarations: [
-        MainComponent
+        MainComponent,
+        JobsResultComponent,
+        ProductsResultComponent,
+        ServicesResultComponent
     ],
     imports: [
         CommonModule,

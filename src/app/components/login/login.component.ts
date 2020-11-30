@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 
           //Se manda a home
           this.status = 'success';
-          //this._router.navigate(['home']);
+          this._router.navigate(['search-page']);
         }
       }
     }, err => {

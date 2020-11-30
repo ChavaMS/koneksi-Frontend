@@ -1,0 +1,27 @@
+.k-clic {
+  cursor: pointer;
+}
+
+.k-clic :hover {
+  background: #D8D8D8;
+  transition: 100ms;
+}
+
+.redondearOpcionIzquierda {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.redondearOpcionDerecha {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+
+.fondoBlanco {
+    background-color: #f8f9fa;
+}
+
+.letra1 {
+    font-size: 1.5em;
+}

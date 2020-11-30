@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'src/app/models/user';
+import { InteractionsService } from 'src/app/services/interactions.service';
 import { GLOBAL } from '../../../services/global';
 
 @Component({
@@ -14,16 +15,34 @@ export class MainInfoComponent implements OnInit {
   @Input() iUserService: boolean;
   @Input() isUserJob: boolean;
 
+  public rating;
+  public ratingMax;
   public url: String;
 
-  constructor() { 
+  constructor(
+    private _interactionService: InteractionsService
+  ) { 
     this.url = GLOBAL.url;
-  }
+    this.ratingMax = [1,2,3,4,5];
+  } 
 
   ngOnInit(): void {
+
+    this.cargarRating();
   
   }
 
+  cargarRating(){
+    this._interactionService.getRating(this.user._id).subscribe(response => {
+      if(response){
+        this.rating = response;
+        console.log(this.rating);
+        
+      }
+    }, err => {
+
+    });
+  }
 
   efecto(indice: number) {
     var rating = new Array();

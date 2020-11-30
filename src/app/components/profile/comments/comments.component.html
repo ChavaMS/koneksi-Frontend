@@ -82,12 +82,25 @@
 </div>
 
 <!--------------------------------------------PAGINACIÓN----------------------------------------------------->
-<div class="w-100 text-center">
+<!-- <div class="w-100 text-center" *ngIf="this.numbers">
     <nav aria-label="..." class="mx-auto">
         <ul class="pagination pagination-sm justify-content-center">
           <li (click)="getComments(number)" *ngFor="let number of this.numbers; let isFirst = first" [ngClass]="{active:isFirst}" class="page-item" aria-current="page">
-            <span class="page-link">
+            <span class="page-link k-link">
               {{ number }}
+              <span *ngIf="isFirst" class="sr-only">(current)</span>
+            </span>
+          </li>
+        </ul>
+      </nav>
+</div> -->
+<div class="w-100 text-center" *ngIf="this.numbers">
+    <nav aria-label="..." class="mx-auto">
+        <ul class="pagination pagination-sm justify-content-center">
+          <li (click)="getComments(number)" *ngFor="let number of this.numbers; let isFirst = first" class="page-item" aria-current="page">
+            <span class="page-link k-link">
+              {{ number }}
+              <span *ngIf="isFirst" class="sr-only">(current)</span>
             </span>
           </li>
         </ul>

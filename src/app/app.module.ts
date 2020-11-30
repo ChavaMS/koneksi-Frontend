@@ -10,7 +10,6 @@ import { SearchPageModule } from './components/search-page/search-page.module';
 //Componentes
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { UserProductsComponent } from './components/user-products/user-products.component';
 import { UserServiceComponent } from './components/user-service/user-service.component';
 import { MainInfoComponent } from './components/profile/main-info/main-info.component';
@@ -20,21 +19,27 @@ import { CommentsComponent } from './components/profile/comments/comments.compon
 import { ContactComponent } from './components/contact/contact.component';
 import { UserJobsComponent } from './components/user-jobs/user-jobs.component';
 
+//MAPS
+import { AgmCoreModule } from '@agm/core';
+
 
 //Servicios
 import { UserServices } from './services/user.service';
 import { InteractionsService } from './services/interactions.service';
-
-//MAPS
-import { AgmCoreModule } from '@agm/core';
-
+import { SearchService } from './services/search.service';
+import { ComunicationService } from './services/comunication.service';
+import { RegisterElectionComponent } from './components/register/register-election/register-election.component';
+import { RegisterUserComponent } from './components/register/register-user/register-user.component';
+import { RegisterUserJobsComponent } from './components/register/register-user-jobs/register-user-jobs.component';
+import { RegisterJobsComponent } from './components/register/register-jobs/register-jobs.component';
+import { RegisterUserProductsComponent } from './components/register/register-user-products/register-user-products.component';
+import { RegisterUserServiceComponent } from './components/register/register-user-service/register-user-service.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
     UserProductsComponent,
     UserServiceComponent,
     UserJobsComponent,
@@ -42,7 +47,13 @@ import { AgmCoreModule } from '@agm/core';
     LocationComponent,
     ActivityComponent,
     CommentsComponent,
-    ContactComponent
+    ContactComponent,
+    RegisterElectionComponent,
+    RegisterUserComponent,
+    RegisterUserJobsComponent,
+    RegisterJobsComponent,
+    RegisterUserProductsComponent,
+    RegisterUserServiceComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +68,9 @@ import { AgmCoreModule } from '@agm/core';
   providers: [
     appRoutingProviders,
     UserServices,
-    InteractionsService
+    InteractionsService,
+    SearchService,
+    ComunicationService
   ],
   bootstrap: [AppComponent]
 })

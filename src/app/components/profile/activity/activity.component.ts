@@ -35,24 +35,12 @@ export class ActivityComponent implements OnInit {
     
     } else if (this.isUserJobs) {
       this.activity = 'Oficios';
-      this.cargarOficioInicial();
+      this.selectAnterior = "0";
 
     } else if (this.isUserService) {
       this.activity = 'Servicios';
     }
 
-  }
-
-  ngAfterContentInit() {
-  }
-
-  //Cargar el primero oficio
-  cargarOficioInicial() {
-    this.selectAnterior = "0";
-
-    window.onload = function () {
-      document.getElementById("0").classList.remove('d-none');
-    }
   }
 
   cargarOficio(option: Number) {

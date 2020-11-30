@@ -16,8 +16,8 @@
 
 <!--------------------------------------------OFICIOS---------------------------------------------------------->
 <div class="text-center w-100 k-oficios-descr-container" *ngIf="this.isUserJobs">
-    <div *ngFor="let job of this.jobs; let i = index; let isFirst = first" id="{{ i }}"
-        class="k-desc d-none w-100">
+    <div *ngFor="let job of this.jobs; let i = index; let isFirst = first" [ngClass]="{'d-none': i > 0}" id="{{ i }}"
+        class="k-desc w-100">
         <h2>{{ job.jobs.name }}</h2>
         <p>{{ job.description }}</p>
     </div>

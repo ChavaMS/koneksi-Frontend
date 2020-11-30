@@ -63,7 +63,7 @@ export class CommentsComponent implements OnInit {
 
     this._InteractionsService.getComments(this.comentario, page).subscribe(response => {
       if (response) {
-        console.log(response);
+        //console.log(response);
 
         this.comments = response.comment;
         this.numbers = new Array();
