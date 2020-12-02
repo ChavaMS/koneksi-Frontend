@@ -1,1 +1,31 @@
-<p>register-jobs works!</p>
+<div class="container mt-5">
+    <div class=" k-container-jobs h-100 w-50 mx-auto">
+        <h2>¿Sabes alguno o varios de estos oficios?</h2>
+        <h5>Selecciona uno o varios, en caso contrario da click en continuar</h5>
+        <div class="row">
+            <div class="col-md-4">
+                <div *ngFor="let job of this.col1" class="form-group form-check">
+                    <input type="checkbox" (change)="getId(job._id, job.name)" class="form-check-input" value="job._id" id="job._id">
+                    <label class="form-check-label" for="exampleCheck1">{{ job.name }}</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div *ngFor="let job of this.col2" class="form-group form-check">
+                    <input type="checkbox" (change)="getId(job._id, job.name)" class="form-check-input" value="job._id" id="job._id">
+                    <label class="form-check-label" for="exampleCheck1">{{ job.name }}</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div *ngFor="let job of this.col3" class="form-group form-check">
+                    <input type="checkbox" (change)="getId(job._id, job.name)" class="form-check-input" value="job._id" id="job._id">
+                    <label class="form-check-label" for="exampleCheck1">{{ job.name }}</label>
+                </div>
+
+                <button *ngIf="this.ids.length > 0" class="btn btn-dark mt-5" (click)="sendInfo()">Continuar con oficios</button>
+                <button *ngIf="this.ids.length == 0" class="btn btn-dark mt-5" (click)="sendToPick()"  >Continuar a siguiente sección</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>

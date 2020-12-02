@@ -18,6 +18,12 @@ import { ActivityComponent } from './components/profile/activity/activity.compon
 import { CommentsComponent } from './components/profile/comments/comments.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { UserJobsComponent } from './components/user-jobs/user-jobs.component';
+import { RegisterElectionComponent } from './components/register/register-election/register-election.component';
+import { RegisterUserComponent } from './components/register/register-user/register-user.component';
+import { RegisterUserJobsComponent } from './components/register/register-user-jobs/register-user-jobs.component';
+import { RegisterJobsComponent } from './components/register/register-jobs/register-jobs.component';
+import { RegisterUserProductsComponent } from './components/register/register-user-products/register-user-products.component';
+import { RegisterUserServiceComponent } from './components/register/register-user-service/register-user-service.component';
 
 //MAPS
 import { AgmCoreModule } from '@agm/core';
@@ -28,12 +34,9 @@ import { UserServices } from './services/user.service';
 import { InteractionsService } from './services/interactions.service';
 import { SearchService } from './services/search.service';
 import { ComunicationService } from './services/comunication.service';
-import { RegisterElectionComponent } from './components/register/register-election/register-election.component';
-import { RegisterUserComponent } from './components/register/register-user/register-user.component';
-import { RegisterUserJobsComponent } from './components/register/register-user-jobs/register-user-jobs.component';
-import { RegisterJobsComponent } from './components/register/register-jobs/register-jobs.component';
-import { RegisterUserProductsComponent } from './components/register/register-user-products/register-user-products.component';
-import { RegisterUserServiceComponent } from './components/register/register-user-service/register-user-service.component';
+import { UserJobsServices } from './services/user.jobs.service';
+import { RegisterNumberProductsComponent } from './components/register/register-number-products/register-number-products.component';
+import { UserProductsService } from './services/user.products.service';
 
 
 @NgModule({
@@ -53,7 +56,8 @@ import { RegisterUserServiceComponent } from './components/register/register-use
     RegisterUserJobsComponent,
     RegisterJobsComponent,
     RegisterUserProductsComponent,
-    RegisterUserServiceComponent
+    RegisterUserServiceComponent,
+    RegisterNumberProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +74,9 @@ import { RegisterUserServiceComponent } from './components/register/register-use
     UserServices,
     InteractionsService,
     SearchService,
-    ComunicationService
+    ComunicationService,
+    UserJobsServices,
+    UserProductsService
   ],
   bootstrap: [AppComponent]
 })

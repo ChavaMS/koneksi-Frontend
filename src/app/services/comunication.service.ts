@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { Search } from '../models/search';
 
 
@@ -8,12 +8,20 @@ export class ComunicationService {
 
     public search: Search;
     private sendObjectSearchSubject = new Subject<Search>();
-    public sendObjectSearchObservable = this.sendObjectSearchSubject.asObservable(); 
+    public sendObjectSearchObservable = this.sendObjectSearchSubject.asObservable();
 
-    constructor() {}
+    private imagenes = new BehaviorSubject<any>('');
+    public obtenerImagenes = this.imagenes.asObservable();
 
-    sendSearchObject( search: Search ){
+
+    constructor() { }
+
+    sendSearchObject(search: Search) {
         this.search = search;
         this.sendObjectSearchSubject.next(this.search);
+    }
+
+    enviarImagenes(imagenes) {
+        this.imagenes.next(imagenes);
     }
 }

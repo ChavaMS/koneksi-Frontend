@@ -2,7 +2,7 @@
     <div class="row h-100">
         <div class="col-md-3"></div>
         <div class="col-md-3 px-0 h-75" >
-            <div class="h-100 k-clic"  [routerLink]="['/register-jobs']">
+            <div *ngIf="this.isProductsService != 'true'" class="h-100 k-clic"  [routerLink]="['/register-jobs']">
                 <div class="fondoBlanco redondearOpcionIzquierda my-5 justify-content-center border h-100 d-flex align-items-center">
                     <div class="d-block  text-center">
                         <span class="display-4 d-block ">Trabajador</span>
@@ -11,9 +11,20 @@
                 </div>
             </div>
 
+
+
+            <div *ngIf="this.isProductsService == 'true'" class="h-100 k-clic"  [routerLink]="['/register-number-products']">
+                <div class="fondoBlanco redondearOpcionIzquierda my-5 justify-content-center border h-100 d-flex align-items-center">
+                    <div class="d-block  text-center">
+                        <span class="display-4 d-block ">Productos</span>
+                        <span class="text-muted letra1">¿Vendes algun producto?</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="col-md-3 px-0 h-75" >
-            <div class="h-100 k-clic" [routerLink]="['/register-user']" >
+            <div *ngIf="this.isProductsService != 'true'" class="h-100 k-clic" [routerLink]="['/register-user']" >
                 <div class="fondoBlanco redondearOpcionDerecha my-5 clic justify-content-center border h-100 d-flex align-items-center">
                     <div class="d-block  text-center">
                         <span class="display-4 d-block">Cliente</span>
@@ -22,7 +33,20 @@
                 </div>
             </div>
 
+            <div *ngIf="this.isProductsService == 'true'" class="h-100 k-clic" [routerLink]="['/register-user-service']" >
+                <div class="fondoBlanco redondearOpcionDerecha my-5 clic justify-content-center border h-100 d-flex align-items-center">
+                    <div class="d-block  text-center">
+                        <span class="display-4 d-block">Servicio</span>
+                        <span class="text-muted letra1">¿Ofreces algun servicio?</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="col-md-3"></div>
+        <div *ngIf="this.isProductsService == 'true'" class="text-center w-100">
+            <button [routerLink]="['/register-jobs']" class="btn btn-dark mx-auto">Regresar</button>
+        </div>
     </div>
+    
 </div>

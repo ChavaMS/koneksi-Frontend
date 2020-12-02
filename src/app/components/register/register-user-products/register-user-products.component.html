@@ -1,1 +1,39 @@
-<p>register-user-products works!</p>
+<div class="container k-container-products">
+    <h2 class="text-center mb-5">Ingrese los datos de los productos:</h2>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 text-center">
+            <form>
+                <div class="form" *ngFor="let product of this.userProductsArray; let i = index;">
+                    <div class="form-row">
+                        <div class="col-2 my-auto">
+                            <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="product.name" placeholder="Nombre">
+                        </div>
+                        <div class="col">
+                            <textarea name="description" id="{{i}}" cols="30" rows="5" #description="ngModel" [(ngModel)]="product.description" class="form-control"
+                                placeholder="Descripción"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row mt-2">
+                        <div class="col-2"></div>
+                        <div class="col">
+                            <input type="number" class="form-control" name="price" #price="ngModel" [(ngModel)]="product.price" placeholder="Precio">
+                        </div>
+                        <div class="col">
+                            <input type="text" name="tags" #tags="ngModel" [(ngModel)]="product.tags" class="form-control" placeholder="Tags">
+                        </div>
+                        <div class="col">
+                            <input type="file" (change)="onPhotoSelected($event)" class="form-control-file" placeholder="Imagen">
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
+                <div class="w-100 text-center">
+                    <input type="button" class="btn btn-dark mx-2" [routerLink]="['/register-number-products']" value="Regresar">
+                    <input type="button" class="btn btn-dark mx-2" (click)="continuar()" value="Continuar">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>

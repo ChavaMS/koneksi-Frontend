@@ -1,6 +1,9 @@
 <div class="container">
     <div class="k-container-register mx-auto">
         <h2 class="mt-5">Ingrese sus datos:</h2>
+        <span *ngIf="this.status" class="my-4  alert alert-danger">
+            {{ this.status }}
+        </span>
         <form #registerUserForm="ngForm" (submit)="createUser()">
             <div class="form-group">
                 <label for="name">Nombre:</label>
@@ -19,8 +22,8 @@
             </div>
             <div class="form-group">
                 <label for="email2">Comprobar correo:</label>
-                <input type="email" name="emailCom" #emailCom="ngModel" [(ngModel)]="emailComp"
-                    class="form-control" id="email2" aria-describedby="emailHelp" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                <input type="email" name="emailCom" #emailCom="ngModel" [(ngModel)]="emailComp" class="form-control"
+                    id="email2" aria-describedby="emailHelp" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
             </div>
             <div class="form-group">
                 <label for="pass1">Password:</label>
@@ -48,7 +51,7 @@
                 <input name="city" #city="ngModel" [(ngModel)]="user.city" type="text" required class="form-control"
                     id="city" aria-describedby="Ciudad">
             </div>
-            <h2>Ingresa uno o todos los datos</h2>
+            <h5>Ingresa uno o todos los datos</h5>
             <div class="form-group">
                 <label for="calle">Calle:</label>
                 <input name="calle" #calle="ngModel" [(ngModel)]="this.street" type="text" required class="form-control"
@@ -67,13 +70,16 @@
             <h5>Fotos de perfil</h5>
             <div class="form-group">
                 <label for="avatar">Foto de perfil:</label>
-                <input type="file" name="image" (change)="onPhotoSelected($event)" class="form-control-file"
-                    id="avatar">
+                <input type="file" name="image" (change)="onPhotoSelected($event)" class="form-control-file" id="avatar"
+                    required>
+<!--                 <img [src]=" this.files[0] || '../../../../assets//img/no-image.png'" class="mt-2 k-profile-avatar" alt="">
+ -->
             </div>
             <div class="form-group">
                 <label for="portada">Foto de portada:</label>
-                <input (change)="onPhotoSelected($event)" type="file" class="form-control-file" id="portada">
-            </div>
+                <input (change)="onPhotoSelected($event)" type="file" class="form-control-file" id="portada" required>
+<!--                 <img src="../../../../assets//img/no-image.png" class="mt-2 k-image-banner" alt="">
+ -->            </div>
 
             <button [disabled]="!registerUserForm.form.valid" type="submit" class="btn btn-dark">Crear cuenta</button>
         </form>

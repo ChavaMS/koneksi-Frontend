@@ -22,8 +22,6 @@ export class UserServices {
         fd.append('email', email);
         fd.append('coverPage', file);
 
-
-
         //let params = JSON.stringify(user);
         //let headers = new HttpHeaders().set('Content-Type', 'application/json');
         //console.log(fd);

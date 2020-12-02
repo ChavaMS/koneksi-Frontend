@@ -13,6 +13,7 @@ import { RegisterUserComponent } from './components/register/register-user/regis
 import { RegisterUserJobsComponent } from './components/register/register-user-jobs/register-user-jobs.component';
 import { RegisterUserProductsComponent } from './components/register/register-user-products/register-user-products.component';
 import { RegisterUserServiceComponent } from './components/register/register-user-service/register-user-service.component';
+import { RegisterNumberProductsComponent } from './components/register/register-number-products/register-number-products.component';
 
 const appRoutes: Routes = [
     { path: '', component: LoginComponent },
@@ -25,8 +26,9 @@ const appRoutes: Routes = [
     { path: 'register-jobs', component: RegisterJobsComponent },
     { path: 'register-user', component: RegisterUserComponent },
     { path: 'register-user-jobs', component: RegisterUserJobsComponent },
-    { path: 'register-user-products', component: RegisterUserProductsComponent },
+    { path: 'register-user-products/:number', component: RegisterUserProductsComponent },
     { path: 'register-user-service', component: RegisterUserServiceComponent },
+    { path: 'register-number-products', component: RegisterNumberProductsComponent },
     { path: '**', component: LoginComponent }
 ]
 

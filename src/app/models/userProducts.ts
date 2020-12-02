@@ -5,8 +5,8 @@ export class UserProducts {
         public user: string,
         public original_name: string,
         public image: string,
-        public price: Number,
+        public price: string,
         public description: string,
-        public tags: [string]
+        public tags: string
     ) { }
 }
