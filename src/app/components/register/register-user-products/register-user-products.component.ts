@@ -47,7 +47,7 @@ export class RegisterUserProductsComponent implements OnInit {
     localStorage.setItem('userProductsArray', JSON.stringify(this.userProductsArray));
     localStorage.setItem('isUserProducts', 'true');
 
-    this._comunicationService.enviarImagenes(this.files);
+    this._comunicationService.enviarImagenesProductos(this.files);
     this._router.navigate(['/register-user']);
   }
 

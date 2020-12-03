@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { routing, appRoutingProviders } from './app.routing';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 
 //CUSTOM MODULE
@@ -37,6 +37,7 @@ import { ComunicationService } from './services/comunication.service';
 import { UserJobsServices } from './services/user.jobs.service';
 import { RegisterNumberProductsComponent } from './components/register/register-number-products/register-number-products.component';
 import { UserProductsService } from './services/user.products.service';
+import { UserServicesService } from './services/user.services.service';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { UserProductsService } from './services/user.products.service';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDgRN1AR5CnGjgdcc3f93CzMho80a2yWog'
     }),
-    SearchPageModule
+    SearchPageModule,
+    ReactiveFormsModule
   ],
   providers: [
     appRoutingProviders,
@@ -76,7 +78,8 @@ import { UserProductsService } from './services/user.products.service';
     SearchService,
     ComunicationService,
     UserJobsServices,
-    UserProductsService
+    UserProductsService,
+    UserServicesService
   ],
   bootstrap: [AppComponent]
 })

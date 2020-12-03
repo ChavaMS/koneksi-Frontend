@@ -3,10 +3,12 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserJobs } from 'src/app/models/userJobs';
 import { UserProducts } from 'src/app/models/userProducts';
+import { UserService } from 'src/app/models/userService';
 import { ComunicationService } from 'src/app/services/comunication.service';
 import { UserJobsServices } from 'src/app/services/user.jobs.service';
 import { UserProductsService } from 'src/app/services/user.products.service';
 import { UserServices } from 'src/app/services/user.service';
+import { UserServicesService } from 'src/app/services/user.services.service';
 
 interface HtmlInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
@@ -32,19 +34,26 @@ export class RegisterUserComponent implements OnInit {
   public userJobsArray: UserJobs[];
   public isUserProducts: string;
   public userProductsArray: UserProducts[];
+  public isUserServices;
+  public userService: UserService
 
   constructor(
     private _userService: UserServices,
     private _userJobsService: UserJobsServices,
     private _router: Router,
     private _userProductsService: UserProductsService,
-    private _comunicationService: ComunicationService
+    private _comunicationService: ComunicationService,
+    private _userServiceServices: UserServicesService
   ) {
     this.userProductsArray = JSON.parse(localStorage.getItem('userProductsArray'));
     this.isUserProducts = JSON.parse(localStorage.getItem('isUserProducts'));
 
     this.isJobs = localStorage.getItem('isJobs');
     this.userJobsArray = JSON.parse(localStorage.getItem('userJobsArray'));
+
+
+    this.isUserServices = JSON.parse(localStorage.getItem('isUserService'));
+    this.userService = JSON.parse(localStorage.getItem('userService'));
 
     this.files = new Array();
     this.user = new User('', '', '', '', '', '', '', '', '', '', '', '', '', new Date(), new Date());
@@ -96,12 +105,11 @@ export class RegisterUserComponent implements OnInit {
                   });
 
                 }
-                //-----------------------------------------------------
-
+                //--------------------------PRODUCTOS-------------------------
 
                 if (this.isUserProducts) {
 
-                  this._comunicationService.obtenerImagenes.subscribe(response => {
+                  this._comunicationService.obtenerImagenesProductos.subscribe(response => {
                     if (response) {
                       this.files = response;
                     }
@@ -114,7 +122,7 @@ export class RegisterUserComponent implements OnInit {
                     }
                   }, err => {
                     if (err) {
-                      
+
                     }
                   });
 
@@ -123,6 +131,31 @@ export class RegisterUserComponent implements OnInit {
                   localStorage.removeItem('isUserProducts');
                 }
 
+                //---------------------------------SERVICIOS----------------------------------
+                if (this.isUserServices) {
+                  this._comunicationService.obtenerImagenesServicios.subscribe(response => {
+                    if (response) {
+                      this.files = response;
+                    }
+                  }, err => {
+
+                  });
+
+                  this._userServiceServices.saveUserService(this.userService, this.files, userId).subscribe(response => {
+                    if (response) {
+                      this._router.navigate(['login']);
+                    }
+                  }, err => {
+                    if (err) {
+
+                    }
+
+                  });
+
+                  localStorage.removeItem('isUserService');
+                  localStorage.removeItem('isUserService');
+
+                }
 
               }
             }, err => {

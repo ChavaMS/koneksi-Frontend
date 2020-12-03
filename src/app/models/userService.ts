@@ -5,5 +5,6 @@ export class UserService {
         public images: [string],
         public schedule: string,
         public description: string,
+        public tags: string
     ) { }
 }

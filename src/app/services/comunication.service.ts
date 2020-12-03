@@ -10,9 +10,12 @@ export class ComunicationService {
     private sendObjectSearchSubject = new Subject<Search>();
     public sendObjectSearchObservable = this.sendObjectSearchSubject.asObservable();
 
-    private imagenes = new BehaviorSubject<any>('');
-    public obtenerImagenes = this.imagenes.asObservable();
+    private imagenesProductos = new BehaviorSubject<any>('');
+    public obtenerImagenesProductos = this.imagenesProductos.asObservable();
 
+
+    private imagenesServicios = new BehaviorSubject<any>('');
+    public obtenerImagenesServicios = this.imagenesServicios.asObservable();
 
     constructor() { }
 
@@ -21,7 +24,13 @@ export class ComunicationService {
         this.sendObjectSearchSubject.next(this.search);
     }
 
-    enviarImagenes(imagenes) {
-        this.imagenes.next(imagenes);
+    enviarImagenesProductos(imagenes) {
+        this.imagenesProductos.next(imagenes);
     }
+
+    enviarImagenesServicios(imagenes){
+
+    }
+
+
 }
