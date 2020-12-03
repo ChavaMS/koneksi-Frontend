@@ -44,5 +44,12 @@ export class UserServicesService {
         return this._http.post(this.url + 'saveUserServices', fd);// { headers: headers });
     }
 
+    getUsersService(): Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+        return this._http.get(this.url + 'get-user-services', { headers: headers });
+    }
+
+
 
 }

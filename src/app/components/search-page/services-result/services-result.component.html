@@ -1,141 +1,36 @@
 <div class="container">
-    <div class="card text-center mt-3">
+    <div class="card text-center mt-3" *ngFor="let service of this.userService">
         <div class="card-body">
           <div class="row">
               <div class="col-md-2 col-12">
-                <img  src="../../../../assets/img/user.png" class="k-profile-avatar" alt="">
+<!--                 <img  src="../../../../assets/img/user.png" class="k-profile-avatar" alt="">
+ -->                <img  src="{{ url + 'get-image-profile/' + service.user.image }}" class="k-profile-avatar" alt="">
               </div>
               <div class="col-md-8 col-12 text-left">
-                  <h3>Salvador Medina Santos</h3>
-                  <p>Distancia con el cliente: </p>
-              </div>
+                  <h3>{{ service.user.name + ' ' + service.user.surname }}</h3>
+                  <p>Distancia con el cliente: {{ service.user.distanceText }} </p>
+                    </div>
               <div class="col-md-2 col-12">
-                <div class="m-1">
-                    <i id="e1" class="fas fa-star" (onmouseover)="efecto(1)"></i>
-                    <i id="e2" class="fas fa-star" (onmouseover)="efecto(2)"></i>
-                    <i id="e3" class="fas fa-star" (onmouseover)="efecto(3)"></i>
-                    <i id="e4" class="fas fa-star" (onmouseover)="efecto(4)"></i>
-                    <i id="e5" class="far fa-star" (onmouseover)="efecto(5)"></i>
+                <div class="m-1" *ngIf="service.user.rating">
+                  <div class="d-inline" *ngFor="let valor of this.ratingMax; let i = index">
+                    <i [ngClass]="{'fas fa-star': i < service.user.rating.promedio}" class=""></i>
+                  </div>
+                  <div class="d-inline" *ngFor="let valor of this.ratingMax; let i = index">
+                    <i [ngClass]="{'far fa-star': i >= service.user.rating.promedio}" class=""></i>
+                  </div>
                 </div>
               </div>
           </div>
         </div>
         <div class="card-footer">
-            <div class="card-deck">
-                <div class="card">
-                  <img src="../../../../assets/img/banner.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
+            <div class="card-deck ">
+                <div class="card" *ngFor="let image of service.images">
+                  <img src="{{ url + 'get-service-image/' + image }}" class="card-img-top k-image-product" alt="...">
                 </div>
-                <div class="card">
-                  <img src="../../../../assets/img/banner.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-                <div class="card">
-                  <img src="../../../../assets/img/banner.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-                <input class="btn btn-dark" type="button" value="Ver más">
+                <input class="btn btn-dark" type="button" [routerLink]="['/user-service/' + service.user._id]" value="Ver más">
               </div>
         </div>
       </div>
 
 
-      <div class="card text-center mt-3">
-        <div class="card-body">
-          <div class="row">
-              <div class="col-md-2 col-12">
-                <img  src="../../../../assets/img/user.png" class="k-profile-avatar" alt="">
-              </div>
-              <div class="col-md-8 col-12 text-left">
-                  <h3>Salvador Medina Santos</h3>
-                  <p>Distancia con el cliente: </p>
-              </div>
-              <div class="col-md-2 col-12">
-                <div class="m-1">
-                    <i id="e1" class="fas fa-star" (onmouseover)="efecto(1)"></i>
-                    <i id="e2" class="fas fa-star" (onmouseover)="efecto(2)"></i>
-                    <i id="e3" class="fas fa-star" (onmouseover)="efecto(3)"></i>
-                    <i id="e4" class="fas fa-star" (onmouseover)="efecto(4)"></i>
-                    <i id="e5" class="far fa-star" (onmouseover)="efecto(5)"></i>
-                </div>
-              </div>
-          </div>
-        </div>
-        <div class="card-footer">
-            <div class="card-deck">
-                <div class="card">
-                  <img src="../../../../assets/img/banner.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-                <div class="card">
-                  <img src="../../../../assets/img/banner.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-                <div class="card">
-                  <img src="../../../../assets/img/banner.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-                <input class="btn btn-dark" type="button" value="Ver más">
-              </div>
-        </div>
-      </div>
-
-
-      <div class="card text-center mt-3">
-        <div class="card-body">
-          <div class="row">
-              <div class="col-md-2 col-12">
-                <img  src="../../../../assets/img/user.png" class="k-profile-avatar" alt="">
-              </div>
-              <div class="col-md-8 col-12 text-left">
-                  <h3>Salvador Medina Santos</h3>
-                  <p>Distancia con el cliente: </p>
-              </div>
-              <div class="col-md-2 col-12">
-                <div class="m-1">
-                    <i id="e1" class="fas fa-star" (onmouseover)="efecto(1)"></i>
-                    <i id="e2" class="fas fa-star" (onmouseover)="efecto(2)"></i>
-                    <i id="e3" class="fas fa-star" (onmouseover)="efecto(3)"></i>
-                    <i id="e4" class="fas fa-star" (onmouseover)="efecto(4)"></i>
-                    <i id="e5" class="far fa-star" (onmouseover)="efecto(5)"></i>
-                </div>
-              </div>
-          </div>
-        </div>
-        <div class="card-footer">
-            <div class="card-deck">
-                <div class="card">
-                  <img src="../../../../assets/img/banner.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-                <div class="card">
-                  <img src="../../../../assets/img/banner.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-                <div class="card">
-                  <img src="../../../../assets/img/banner.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-                <input class="btn btn-dark" type="button" value="Ver más">
-              </div>
-        </div>
-      </div>
 </div>

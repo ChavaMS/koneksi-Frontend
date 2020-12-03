@@ -3,50 +3,50 @@
   <div *ngIf="this.numbers.length == 0">
     <h5>No hay resultados que mostrar.</h5>
   </div>
-
-  <div *ngIf="this.resultProducts">
-    <div *ngFor="let element of this.resultProducts" class="card text-center mt-3">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-2 col-12">
-            <!-- <img  src="../../../../assets/img/user.png" class="k-profile-avatar" alt=""> -->
-            <img src="{{url+'get-image-profile/'+this.element.user.image}}" class="k-profile-avatar" alt="">
-          </div>
-          <div class="col-md-8 col-12 text-left">
-            <h3>{{ this.element.user.name + ' ' + this.element.user.surname }}</h3>
-            <p>Distancia con el cliente: {{ this.element.user.distanceText }} </p>
-          </div>
-          <div class="col-md-2 col-12">
-            <div class="m-1" *ngIf="element.user.rating">
-              <div class="d-inline" *ngFor="let valor of this.ratingMax; let i = index">
-                <i [ngClass]="{'fas fa-star': i < element.user.rating.promedio}" class=""></i>
-              </div>
-              <div class="d-inline" *ngFor="let valor of this.ratingMax; let i = index">
-                <i [ngClass]="{'far fa-star': i >= element.user.rating.promedio}" class=""></i>
+  <div class="k-container-products">
+    <div *ngIf="this.resultProducts">
+      <div *ngFor="let element of this.resultProducts" class="card text-center mt-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-2 col-12">
+              <!-- <img  src="../../../../assets/img/user.png" class="k-profile-avatar" alt=""> -->
+              <img src="{{url+'get-image-profile/'+this.element.user.image}}" class="k-profile-avatar" alt="">
+            </div>
+            <div class="col-md-8 col-12 text-left">
+              <h3>{{ this.element.user.name + ' ' + this.element.user.surname }}</h3>
+              <p>Distancia con el cliente: {{ this.element.user.distanceText }} </p>
+            </div>
+            <div class="col-md-2 col-12">
+              <div class="m-1" *ngIf="element.user.rating">
+                <div class="d-inline" *ngFor="let valor of this.ratingMax; let i = index">
+                  <i [ngClass]="{'fas fa-star': i < element.user.rating.promedio}" class=""></i>
+                </div>
+                <div class="d-inline" *ngFor="let valor of this.ratingMax; let i = index">
+                  <i [ngClass]="{'far fa-star': i >= element.user.rating.promedio}" class=""></i>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="card-footer mt-3">
-        <div class="card-deck">
+        <div class="card-footer mt-3">
+          <div class="card-deck">
 
 
-          <div *ngFor="let product of element.productos" class="card k-card">
-            <!-- <img src="../../../../assets/img/banner.jpg" class="card-img-top" alt="..."> -->
-            <img src="{{url+'get-product-image/'+product.image}}" class="card-img-top k-image-product" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{ product.name }}</h5>
+            <div *ngFor="let product of element.productos" class="card k-card">
+              <!-- <img src="../../../../assets/img/banner.jpg" class="card-img-top" alt="..."> -->
+              <img src="{{url+'get-product-image/'+product.image}}" class="card-img-top k-image-product" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+              </div>
             </div>
-          </div>
 
-          <input (click)="profileProducts(element.user._id)" class="btn btn-dark" type="button" value="Ver más">
+            <input (click)="profileProducts(element.user._id)" class="btn btn-dark" type="button" value="Ver más">
+          </div>
         </div>
       </div>
+
     </div>
-
   </div>
-
   <!-----------------------------------PAGINACION---------------------------------------------->
   <div class="w-100 text-center mt-3" *ngIf="this.numbers.length > 0 && this.isSearch">
     <nav aria-label="..." class="mx-auto">
@@ -55,7 +55,7 @@
           class="page-item" aria-current="page">
           <span class="page-link k-link">
             {{ number }}
-            <span *ngIf="isFirst" class="sr-only">(current)</span> 
+            <span *ngIf="isFirst" class="sr-only">(current)</span>
           </span>
         </li>
       </ul>
