@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="k-container-register mx-auto">
+        <h2 class="mt-5">Ingrese sus datos:</h2>
+        <span *ngIf="this.status" class="my-4  alert alert-danger">
+            {{ this.status }}
+        </span>
+        <form #registerUserForm="ngForm" (submit)="createUser()">
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input name="name" #name="ngModel" [(ngModel)]="user.name" type="text" class="form-control" id="name"
+                    aria-describedby="Nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="apellidos">Apellidos:</label>
+                <input name="surname" #surname="ngModel" [(ngModel)]="user.surname" type="text" class="form-control"
+                    id="apellidos" required aria-describedby="apellidos">
+            </div>
+            <div class="form-group">
+                <label for="email1">Correo:</label>
+                <input name="email" #email="ngModel" [(ngModel)]="user.email" type="email" class="form-control"
+                    id="email1" required aria-describedby="emailHelp" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            </div>
+            <div class="form-group">
+                <label for="email2">Comprobar correo:</label>
+                <input type="email" name="emailCom" #emailCom="ngModel" [(ngModel)]="emailComp" class="form-control"
+                    id="email2" aria-describedby="emailHelp" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            </div>
+            <div class="form-group">
+                <label for="pass1">Password:</label>
+                <input name="password" #password="ngModel" [(ngModel)]="user.password" type="password" required
+                    class="form-control" id="pass1">
+            </div>
+            <div class="form-group">
+                <label for="pass2">Comprobar contraseña:</label>
+                <input type="password" name="passowordCom" #passwordCom="ngModel" [(ngModel)]="passwordComp"
+                    class="form-control" id="pass2" required>
+            </div>
+            <h5>Dirección</h5>
+            <div class="form-group">
+                <label for="country">País:</label>
+                <input name="country" #country="ngModel" [(ngModel)]="user.country" required type="text"
+                    class="form-control" id="country" aria-describedby="Pais">
+            </div>
+            <div class="form-group">
+                <label for="state">Estado:</label>
+                <input name="state" #state="ngModel" [(ngModel)]="user.state" type="text" required class="form-control"
+                    id="state" aria-describedby="Estado">
+            </div>
+            <div class="form-group">
+                <label for="city">Ciudad:</label>
+                <input name="city" #city="ngModel" [(ngModel)]="user.city" type="text" required class="form-control"
+                    id="city" aria-describedby="Ciudad">
+            </div>
+            <h5>Ingresa uno o todos los datos</h5>
+            <div class="form-group">
+                <label for="calle">Calle:</label>
+                <input name="calle" #calle="ngModel" [(ngModel)]="this.street" type="text" required class="form-control"
+                    id="calle" aria-describedby="Ciudad">
+            </div>
+            <div class="form-group">
+                <label for="colonia">Colonia:</label>
+                <input name="colonia" #colonia="ngModel" [(ngModel)]="this.suburb" type="text" class="form-control"
+                    id="colonia" aria-describedby="Ciudad">
+            </div>
+            <div class="form-group">
+                <label for="cp">Código postal:</label>
+                <input name="cp" #cp="ngModel" [(ngModel)]="this.postalCode" type="text" class="form-control" id="cp"
+                    aria-describedby="Ciudad">
+            </div>
+            <h5>Fotos de perfil</h5>
+            <div class="form-group">
+                <label for="avatar">Foto de perfil:</label>
+                <input type="file" name="image" (change)="onPhotoSelected($event)" class="form-control-file" id="avatar"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="portada">Foto de portada:</label>
+                <input (change)="onPhotoSelected($event)" type="file" class="form-control-file" id="portada" required>
+            </div>
+
+            <div class="w-100 d-flex justify-content-between mt-5">
+                <input *ngIf="this.isUserProducts || this.userService || this.isJobs" type="button" class="btn btn-dark" (click)="goBack()" value="Regresar">
+                <button [disabled]="!registerUserForm.form.valid" type="submit" class="btn btn-dark">Crear cuenta</button>
+            </div>
+        </form>
+    </div>
+</div>

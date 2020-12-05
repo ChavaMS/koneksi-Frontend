@@ -6,57 +6,105 @@
             aria-expanded="false" aria-controls="collapseExample">+</button>
     </div>
 
-    <div class="collapse my-3" id="collapseExample">
-        <textarea name="" id="" cols="30" rows="3" class="form-control"></textarea>
+    <div class="alert alert-success" *ngIf="status == 'success'">Comentario realizado con éxito.</div>
+    <div class="alert alert-danger" *ngIf="status == 'error'">Hubo un error al realizar el comentario.</div>
 
-        <div class="my-2">
-            <select class="d-inline form-control w-25" name="" id="elemento">
-                <option value="producto1">Producto 1</option>
-                <option value="producto2">Producto 2</option>
-                <option value="producto3">Producto 3</option>
-            </select>
+    <form action="" #commentsForm="ngForm" (ngSubmit)="onSubmit(commentsForm)">
+        <div class="collapse my-3" id="collapseExample">
+            <textarea required #comentarioText="ngModel" [(ngModel)]="comentario.text" name="comentarioText"
+                id="comment" cols="30" rows="3" class="form-control"></textarea>
+            <div class="my-2">
+                
+                <select *ngIf="isUserProducts" required class="d-inline form-control w-25" name="" id="elementoComentario"
+                    #activity_id="ngModel" name="activity_id" [(ngModel)]="comentario.activity_id">
+                    <option *ngFor="let product of this.products" value="{{product._id}}">{{ product.name }}</option>
+                </select>
+                
+                
+                <select *ngIf="isUserJobs" required class="d-inline form-control w-25" name="" id="elementoComentario"
+                    #activity_id="ngModel" name="activity_id" [(ngModel)]="comentario.activity_id">
+                    <option *ngFor="let job of this.jobs" value="{{job._id}}">{{ job.jobs.name }}</option>
+                </select>
 
-            <input type="button" value="Enviar" class="mx-2 mb-2 btn btn-dark">
+                <input type="submit" value="Enviar" class="mx-2 mb-2 btn btn-dark"
+                    [disabled]="!commentsForm.form.valid">
+            </div>
         </div>
-    </div>
+    </form>
+
 </div>
 <!-----------------------------COMENTARIOS-------------------------------------------------->
 <hr>
 
 <div class="mb-2">
-    <select class="d-inline form-control w-25" name="" id="elemento">
-        <option value="producto1">Producto 1</option>
-        <option value="producto2">Producto 2</option>
-        <option value="producto3">Producto 3</option>
+    
+    <select [(ngModel)]="opcionSeleccionado" (change)="getComments(1)" *ngIf="isUserProducts" required class="d-inline form-control w-25" name="" id="elemento"
+        #activity_id="ngModel" name="activity_id" [(ngModel)]="comentario.activity_id">
+        <option *ngFor="let product of this.products" value="{{product._id}}">{{ product.name }}</option>
     </select>
-
-    <input type="button" value="Buscar" class="mx-2 mb-2 btn btn-dark">
+    
+    
+    <select [(ngModel)]="opcionSeleccionado" (change)="getComments(1)" *ngIf="isUserJobs" required
+        class="d-inline form-control w-25" name="" id="elemento" #activity_id="ngModel" name="activity_id"
+        [(ngModel)]="comentario.activity_id">
+        <option *ngFor="let job of this.jobs" value="{{job._id}}">{{ job.jobs.name }}</option>
+    </select>
 </div>
 
-<div class="card k-card">
-    <div class="card-header p-2">
-        <img class="k-avatar" src="../../../assets/img/user.png" alt="">
-        Josué
-    </div>
-    <div class="card-body">
-        <blockquote class="blockquote mb-0">
-            <p class="k-comentario-texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Integer posuere erat a ante.</p>
-        </blockquote>
+<div >
+    <div class="card k-card" *ngFor="let comment of this.comments">
+        <div class="card-header p-2">
+            <img *ngIf="!comment.emitter.image" src="../../../../assets/img/user.png" class="k-avatar" alt="">
+            <img *ngIf="comment.emitter.image" src="{{url+'get-image-profile/'+comment.emitter.image}}" class="k-avatar"
+                alt="">
+            {{ comment.emitter.name + ' ' + comment.emitter.surname }}
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p class="k-comentario-texto">
+                    {{ comment.text }}
+                </p>
+            </blockquote>
+        </div>
     </div>
 </div>
 
-
-<div class="card k-card">
-    <div class="card-header p-2">
-        <img class="k-avatar" src="../../../assets/img/user.png" alt="">
-        Salvador
-    </div>
-    <div class="card-body">
-        <blockquote class="blockquote mb-0">
-            <p class="k-comentario-texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Integer posuere erat a ante.</p>
-        </blockquote>
+<div *ngIf="this.sinComentarios">
+    <div class="card k-card" *ngFor="let comment of this.comments">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p class="k-comentario-texto">
+                    No hay comentarios para mostrar.
+                </p>
+            </blockquote>
+        </div>
     </div>
 </div>
+
+<!--------------------------------------------PAGINACIÓN----------------------------------------------------->
+<!-- <div class="w-100 text-center" *ngIf="this.numbers">
+    <nav aria-label="..." class="mx-auto">
+        <ul class="pagination pagination-sm justify-content-center">
+          <li (click)="getComments(number)" *ngFor="let number of this.numbers; let isFirst = first" [ngClass]="{active:isFirst}" class="page-item" aria-current="page">
+            <span class="page-link k-link">
+              {{ number }}
+              <span *ngIf="isFirst" class="sr-only">(current)</span>
+            </span>
+          </li>
+        </ul>
+      </nav>
+</div> -->
+<div class="w-100 text-center" *ngIf="this.numbers">
+    <nav aria-label="..." class="mx-auto">
+        <ul class="pagination pagination-sm justify-content-center">
+          <li (click)="getComments(number)" *ngFor="let number of this.numbers; let isFirst = first" class="page-item" aria-current="page">
+            <span class="page-link k-link">
+              {{ number }}
+              <span *ngIf="isFirst" class="sr-only">(current)</span>
+            </span>
+          </li>
+        </ul>
+      </nav>
+</div>
+<!--------------------------------------------PAGINACIÓN----------------------------------------------------->
 <!-----------------------------COMENTARIOS-------------------------------------------------->

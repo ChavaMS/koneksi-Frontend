@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-location',
@@ -7,14 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LocationComponent implements OnInit {
 
+  @Input() lat : Number;
+  @Input() lon : Number;
 
-  
-  lat = 51.678418;
-  lng = 7.809007;
+  constructor() {
 
-  constructor() { }
+
+   }
 
   ngOnInit(): void {
+    
   }
 
 }

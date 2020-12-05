@@ -1,0 +1,79 @@
+<div class="container k-container text-center">
+    <h3 class="mt-3">Ingrese los datos del servicio que presta:</h3>
+    <div class="mt-5">
+        <span *ngIf="this.error != ''" class="alert alert-danger">
+            {{ this.error }}
+        </span>
+    </div>
+    <div class="row ">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <form action="" [formGroup]="formServices" (ngSubmit)="onFormSubmit()" class="text-left">
+                <label for="descripcion" class="form-label mt-5">Descripción</label>
+                <textarea name="descripcion" class="form-control" id="" cols="30" rows="5"
+                    placeholder="Ingrese una descripción detallada de lo que realiza"
+                    formControlName="description"></textarea>
+                <div class="form-row mt-2">
+                    <div class="col-6">
+                        <label for="" class="text-center w-100">Horario</label>
+                        <div class="text-center">
+                            <div class="form-check d-inline mx-1">
+                                <input class="form-check-input" type="checkbox" formControlName="matutino" name="M"
+                                    id="m" value="M">
+                                <label class="form-check-label" for="gridRadios2">
+                                    Matutino
+                                </label>
+                            </div>
+                            <div class="form-check d-inline mx-1">
+                                <input class="form-check-input" type="checkbox" formControlName="vespertino" name="V"
+                                    id="v" value="V">
+                                <label class="form-check-label" for="gridRadios2">
+                                    Vespertino
+                                </label>
+                            </div>
+                            <div class="form-check d-inline mx-1">
+                                <input class="form-check-input" type="checkbox" name="N" id="n"
+                                    formControlName="nocturno" value="N">
+                                <label class="form-check-label" for="gridRadios2">
+                                    Nocturno
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-6 ">
+                        <div class="form-group my-auto">
+                            <label class="form-check-label" for="gridRadios2">
+                                Tags
+                            </label>
+                            <input class="form-control w-75 d-inline mx-2" placeholder="Ej: mesa, silla"
+                                formControlName="tags" type="text" name="T" id="t">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <input type="button" class="btn btn-dark" (click)="addImage()" value="Agregar imagen">
+                </div>
+                <div formArrayName="images" class="mt-2">
+                    <div *ngFor="let image of imagesArray.controls; let id = index" [formGroupName]="id" class="my-2">
+                        <div class="form-row">
+                            <div class="col-9">
+                                <input formControlName="image" type="file" class="form-control my-auto">
+                            </div>
+                            <div class="col-3 text-center" *ngIf="id != 0">
+                                <button class="btn btn-danger" (click)="deleteImage(id)">Borrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" d-flex justify-content-between mt-5">
+                    <input (click)="sendToPick()" type="button" value="Regresar" class="mx-2 btn btn-dark">
+                    <input type="submit" value="Continuar" class="mx-2 btn btn-dark">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

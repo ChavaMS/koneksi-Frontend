@@ -1,0 +1,100 @@
+<!-- <div class="k-top-publicity">
+
+</div> -->
+
+<div class="row k-search-page">
+    <div class="col-md-3 mt-2 text-center k-search-class">
+        <div class="d-flex justify-content-center">
+            <div class="p-1">
+                <a href="" (click)="activo(1)" [routerLink]="['jobs-result']" class="badge badge-light p-0">
+                    <i class="fas fa-briefcase k-icon-color"></i>
+                    <span class=""> Oficios</span>
+                </a>
+
+            </div>
+            <div class="p-1">
+                <a href="" (click)="activo(2)" [routerLink]="['products-result']" class="badge badge-light p-0">
+                    <i class="fas fa-tshirt k-icon-color"></i>
+                    <span class="">Productos</span>
+                </a>
+            </div>
+            <div class=" p-1">
+                <a href="" (click)="activo(3)" [routerLink]="['services-result']" class="badge badge-light p-0">
+                    <i class="fas fa-hands-helping k-icon-color"></i>
+                    <span class="">Servicios</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <form  #loginForm="ngForm" (ngSubmit)="busqueda(loginForm)" action="" class="k-FormFull form-inline my-2 my-lg-0">
+                <div class=" mt-4">
+                    <input name="itemSearch" #itemSearch="ngModel" [(ngModel)]="search.item" class="form-control"  type="search" placeholder="Search"
+                        aria-label="Search">
+                    <button class="btn btn-dark ml-2 my-2 my-sm-0" type="submit"><i
+                            class="fas fa-search"></i></button>
+                </div>
+            </form>
+
+            <h2 class="mt-3">Filtros</h2>
+
+<!--             <h5 class="k-border pt-2">Horarios</h5>
+
+            <div class="text-left k-schedule mx-auto">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Matutino
+                    </label>
+                </div>
+                <div class="form-check ">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                    <label class="form-check-label" for="defaultCheck2">
+                        Vespertino
+                    </label>
+                </div>
+                <div class="form-check ">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+                    <label class="form-check-label" for="defaultCheck3">
+                        Nocturno
+                    </label>
+                </div>
+            </div> -->
+
+            <h5 class="mt-4 pt-2 k-border">Ubicación</h5>
+            <input type="button" class="btn btn-dark " value="Ubicación automatica">
+
+            <div class="k-form-location mt-3 k-border pt-3">
+                <h5>Coloque su ubicación</h5>
+                <div class="form-group row mx-auto">
+                    <label for="inputEstado" class="col-sm-2 col-form-label pl-2">Estado</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="estado"  #estado="ngModel" [(ngModel)]="search.state" class="form-control w-75" id="inputEstado">
+                    </div>
+                </div>
+                <div class="form-group row mx-auto">
+                    <label for="inputCiudad" class="col-sm-2 col-form-label pl-2">Ciudad</label>
+                    <div class="col-sm-10">
+                        <input name="ciudad"  #ciudad="ngModel" [(ngModel)]="search.city" type="text" class="form-control w-75" id="inputCiudad">
+                    </div>
+                </div>
+                <div class="form-group row mx-auto">
+                    <label for="inputCalle" class="col-sm-2 col-form-label pl-2">Pais</label>
+                    <div class="col-sm-10">
+                        <input name="pais" type="text"  #pais="ngModel" [(ngModel)]="search.country" class="form-control w-75" id="inputCalle">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-check k-border pt-2">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+                <label class="form-check-label" for="defaultCheck4">
+                    Ordenar por distancia
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9 mt-2">
+        <router-outlet></router-outlet>
+    </div>
+</div>

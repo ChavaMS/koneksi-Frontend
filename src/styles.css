@@ -64,3 +64,11 @@ footer {
     border-radius: 10px;
 }
 /*-------------------*/
+
+
+/*-------PAGINATION------*/
+.k-link{
+    cursor: pointer;
+}
+
+/*-----------------------*/

@@ -1,13 +1,27 @@
 .k-carousel-inner {
   object-fit: cover;
   min-height: 262px;
+  max-height: 262px;
 }
 
 .k-img-products {
   min-height: 262px;
+  max-height: 262px;
 }
 
 
-#descripcion{
-    min-height: 262px;
+#descripcion {
+  min-height: 262px;
+  max-height: 262px;
+}
+
+.k-oficios-descr-container {
+  min-height: 262px;
+  max-height: 262px;
+  display: table;
+}
+
+.k-desc {
+  display: table-cell;
+  vertical-align: middle;
 }

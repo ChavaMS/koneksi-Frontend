@@ -1,0 +1,19 @@
+.k-profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  overflow: hidden;
+  margin-right: 5px;
+  position: relative;
+  margin-left: 10px;
+}
+
+
+.k-image-product,
+.k-card {
+  max-width: 300.29px;
+}
+
+.k-container-products {
+  min-height: 1000px;
+}

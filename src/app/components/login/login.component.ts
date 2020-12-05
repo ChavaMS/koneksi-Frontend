@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../../models/user';
-import { UserService } from '../../services/user.service';
+import { UserServices } from '../../services/user.service';
 declare var particlesJS: any;
 
 @Component({
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _userService: UserService
+    private _userService: UserServices
   ) {
     this.user = new User('', '', '', '', '', '', '', '', '', '', '', '', '', new Date(), new Date());
   }
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 
           //Se manda a home
           this.status = 'success';
-          //this._router.navigate(['home']);
+          this._router.navigate(['search-page']);
         }
       }
     }, err => {

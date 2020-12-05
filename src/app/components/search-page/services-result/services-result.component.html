@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="k-container-service">
+    <div *ngIf="this.numbers.length == 0">
+      <h5>No hay resultados que mostrar.</h5>
+    </div>
+    <div class="card text-center mt-3" *ngFor="let service of this.userService">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2 col-12">
+            <img *ngIf="!service.user.image" src="../../../../assets/img/user.png" class="k-profile-avatar" alt="">
+            <img *ngIf="service.user.image" src="{{ url + 'get-image-profile/' + service.user.image }}"
+              class="k-profile-avatar" alt="">
+          </div>
+          <div class="col-md-8 col-12 text-left">
+            <h3>{{ service.user.name + ' ' + service.user.surname }}</h3>
+            <p>Distancia con el cliente: {{ service.user.distanceText }} </p>
+          </div>
+          <div class="col-md-2 col-12">
+            <div class="m-1" *ngIf="service.user.rating">
+              <div class="d-inline" *ngFor="let valor of this.ratingMax; let i = index">
+                <i [ngClass]="{'fas fa-star': i < service.user.rating.promedio}" class=""></i>
+              </div>
+              <div class="d-inline" *ngFor="let valor of this.ratingMax; let i = index">
+                <i [ngClass]="{'far fa-star': i >= service.user.rating.promedio}" class=""></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-deck ">
+          <div class="card k-card " *ngFor="let image of service.images">
+            <img src="{{ url + 'get-service-image/' + image }}" class="card-img-top k-image-product" alt="...">
+          </div>
+          <input class="btn btn-dark" type="button" [routerLink]="['/user-service/' + service.user._id]"
+            value="Ver más">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--------------------------------------PAGINACIÓN--------------------------------------->
+  <div class="w-100 text-center mt-3" *ngIf="this.numbers.length > 0 && this.isSearch">
+    <nav aria-label="..." class="mx-auto">
+      <ul class="pagination pagination-sm justify-content-center">
+        <li (click)="getServiceSearch(number)" *ngFor="let number of this.numbers; let isFirst = first"
+          class="page-item" aria-current="page">
+          <span class="page-link k-link">
+            {{ number }}
+            <span *ngIf="isFirst" class="sr-only">(current)</span>
+          </span>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="w-100 text-center mt-3" *ngIf="this.numbers.length > 0  && !this.isSearch">
+    <nav aria-label="..." class="mx-auto">
+      <ul class="pagination pagination-sm justify-content-center">
+        <li (click)="getUserServices(number)" *ngFor="let number of this.numbers; let isFirst = first" class="page-item"
+          aria-current="page">
+          <span class="page-link k-link">
+            {{ number }}
+            <span *ngIf="isFirst" class="sr-only">(current)</span>
+          </span>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

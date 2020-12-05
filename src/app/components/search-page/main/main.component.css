@@ -1,0 +1,36 @@
+.k-search-page{
+    min-height: 1000px;
+}
+
+.k-top-publicity{
+    min-height: 200px;
+}
+
+.k-icon-color{
+    color: black;
+    font-size: 40px;
+}
+
+.k-navSearch{
+    background-color: darkgray;
+}
+
+.k-search-class{
+    border-right: 1px solid black;
+}
+
+.k-container-link{
+ cursor: pointer;
+}
+
+.k-schedule{
+    max-width: 100px;
+}
+
+.k-border{
+    border-top: 1px solid black;
+}
+
+.k-form-location{
+
+}

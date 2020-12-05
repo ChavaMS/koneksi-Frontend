@@ -1,0 +1,79 @@
+<div class="container">
+    <h2 class="text-center mb-5">Ingrese los datos de los oficios que seleccionó:</h2>
+    <div class="mt-5 mb-4 w-100 text-center">
+        <span *ngIf="this.error && this.error != ''" class="alert alert-danger">
+            {{ this.error }}
+        </span>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+
+            <form action="" (submit)="continuar()">
+                <div *ngFor="let item of this.jobs; let i = index" class="k-container-user-jobs">
+                    <div class="row">
+                        <div class="col-md-2 my-auto">
+                            <h5 class="text-center">{{ this.names[i] }}</h5>
+                        </div>
+                        <div class="col-md-10">
+
+                            <div class="form-group row">
+                                <label for="description" class="col-sm-2 col-form-label">Descricpión</label>
+                                <div class="col-sm-10">
+                                    <textarea [(ngModel)]="this.userJobsArray[i].description" #description="ngModel"
+                                        class="form-control w-100" name="description" id="" cols="60"
+                                        rows="5"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="tags" class="col-sm-2 col-form-label">Tags</label>
+                                <div class="col-sm-10">
+                                    <input [(ngModel)]="this.userJobsArray[i].tags" #tags="ngModel" type="text"
+                                        name="tags" class="form-control" id="tags">
+                                </div>
+                            </div>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-sm-2 pt-0">Horarios</legend>
+                                    <div class="col-sm-10">
+                                        <div class="form-check">
+                                            <input class="form-check-input" [(ngModel)]="this.turnos[i].matutino"
+                                                #M="ngModel" name="M" type="checkbox" id="gridRadios1" value="option1">
+                                            <label class="form-check-label" for="gridRadios1">
+                                                Matutino
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox"
+                                                [(ngModel)]="this.turnos[i].vespertino" #V="ngModel" name="V"
+                                                id="gridRadios2" value="option2">
+                                            <label class="form-check-label" for="gridRadios2">
+                                                Vespertino
+                                            </label>
+                                        </div>
+                                        <div class="form-check disabled">
+                                            <input class="form-check-input" type="checkbox"
+                                                [(ngModel)]="this.turnos[i].nocturno" #N="ngModel" name="N"
+                                                id="gridRadios3" value="option3">
+                                            <label class="form-check-label" for="gridRadios3">
+                                                Nocturno
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="w-100  d-flex justify-content-between">
+                    <input type="button" class="btn btn-dark" (click)='goBack()' value="Regresar">
+                    <input type="submit" value="Continuar" class="btn btn-dark">
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

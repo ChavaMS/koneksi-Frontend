@@ -1,5 +1,5 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { UserService } from './services/user.service';
+import { UserServices } from './services/user.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { GLOBAL } from './services/global';
 
@@ -17,7 +17,7 @@ export class AppComponent {
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _userService: UserService
+    private _userService: UserServices
   ) {
     this.url = GLOBAL.url;
     this.title = 'RED SOCIAL';
