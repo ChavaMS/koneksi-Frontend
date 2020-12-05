@@ -21,7 +21,7 @@ export class RegisterUserServiceComponent implements OnInit {
     private _router: Router
   ) {
     this.error = ''
-    this.userService = new UserService('', '', [''], '', '','');
+    this.userService = new UserService('', '', [''], '', '', '');
   }
 
   ngOnInit(): void {
@@ -44,6 +44,11 @@ export class RegisterUserServiceComponent implements OnInit {
     return this.formServices.get('images') as FormArray;
   }
 
+  sendToPick() {
+    localStorage.setItem('productService', 'true');
+    this._router.navigate(['register-election']);
+  }
+
   addImage() {
     let fb = this.formBuilder.group({
       image: ['', Validators.required]
@@ -56,7 +61,7 @@ export class RegisterUserServiceComponent implements OnInit {
   }
 
   onFormSubmit() {
-    console.log(this.formServices.value);
+    this.error = '';
 
     let schedule = '';
     if (this.formServices.value.matutino != '') {
@@ -70,20 +75,27 @@ export class RegisterUserServiceComponent implements OnInit {
     }
 
     if (schedule == '') {
-      this.error = 'Seleccione por lo menos un horario';
+      this.error = '- Seleccione por lo menos un horario';
     }
     if (this.formServices.value.description == '') {
       this.error += '\n';
-      this.error += 'Coloque una descripción';
+      this.error += '- Coloque una descripción';
     }
     if (this.formServices.value.tags == '') {
       this.error += '\n';
-      this.error += 'Coloque por lo menos un tag';
+      this.error += '- Coloque por lo menos un tag';
     }
+
+    this.formServices.value.images.forEach(element => {
+      if (element.image == "") {
+        this.error += ' - Ingrese todas las imagenes';
+      }
+    });
 
     if (this.error != '') {
       return;
     }
+
 
     this.userService.schedule = schedule;
     this.userService.description = this.formServices.value.description;
@@ -92,11 +104,11 @@ export class RegisterUserServiceComponent implements OnInit {
     localStorage.removeItem('userService')
     localStorage.removeItem('isUserService')
 
-    localStorage.setItem('isUserService','true')
+    localStorage.setItem('isUserService', 'true')
     localStorage.setItem('userService', JSON.stringify(this.userService));
 
 
-    this._comunicationService.enviarImagenesServicios(this.formServices.value.iamges);
+    this._comunicationService.enviarImagenesServicios(this.formServices.value.images);
     this._router.navigate(['register-user']);
 
   }

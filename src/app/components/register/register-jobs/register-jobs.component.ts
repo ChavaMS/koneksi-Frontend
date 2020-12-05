@@ -43,11 +43,13 @@ export class RegisterJobsComponent implements OnInit {
     this._router.navigate(['register-user-jobs']);
   }
 
-  sendToPick(){
+  sendToPick() {
     localStorage.setItem('productService', 'true');
     this._router.navigate(['register-election']);
+  }
 
-
+  goBack(){
+    this._router.navigate(['register-election']);
   }
 
   getId(id: string, nombre: string) {

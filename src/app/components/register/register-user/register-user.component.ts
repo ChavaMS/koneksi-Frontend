@@ -35,7 +35,7 @@ export class RegisterUserComponent implements OnInit {
   public isUserProducts: string;
   public userProductsArray: UserProducts[];
   public isUserServices;
-  public userService: UserService
+  public userService: UserService;
 
   constructor(
     private _userService: UserServices,
@@ -60,8 +60,35 @@ export class RegisterUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
+
+  goBack() {
+    console.log(this.isUserProducts);
+    
+    if (this.isUserProducts) {
+      localStorage.removeItem('userProductsArray');
+      localStorage.removeItem('userProductsImages');
+      localStorage.removeItem('isUserProducts');
+
+      this._router.navigate(['register-user-products']);
+
+    } else if (this.userService) {
+      localStorage.removeItem('userService');
+      localStorage.removeItem('isUserService');
+
+      this._router.navigate(['register-user-service']);
+    
+    } else if (this.isJobs) {
+      localStorage.removeItem('userJobsArray');
+      localStorage.removeItem('isJobs');
+      localStorage.removeItem('oficios');
+      localStorage.removeItem('NombreOficios');
+
+      this._router.navigate(['register-jobs']);
+    
+    }
+  }
+
   public filesToUpload: Array<File>;
   fileChangeEvent(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
@@ -152,7 +179,7 @@ export class RegisterUserComponent implements OnInit {
 
                   });
 
-                  localStorage.removeItem('isUserService');
+                  localStorage.removeItem('userService');
                   localStorage.removeItem('isUserService');
 
                 }

@@ -12,7 +12,7 @@ export class RegisterUserJobsComponent implements OnInit {
   public names: string[];
   public userJobsArray: UserJobs[];
   public turnos: Turno[];
-
+  public error;
   constructor(
     private _router: Router
   ) {
@@ -32,7 +32,14 @@ export class RegisterUserJobsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goBack() {
+    localStorage.removeItem('oficios');
+    localStorage.removeItem('NombreOficios');
+    this._router.navigate(['register-jobs']);
+  }
+
   continuar(): boolean {
+    this.error = '';
 
     for (let i = 0; i < this.userJobsArray.length; i++) {
       let horarios: string = '';
@@ -49,7 +56,18 @@ export class RegisterUserJobsComponent implements OnInit {
 
       this.userJobsArray[i].jobId = this.jobs[i];
       this.userJobsArray[i].schedule = horarios;
+
+      if (this.userJobsArray[i].description == '' || this.userJobsArray[i].tags == '' || horarios == '') {
+        this.error = 'Rellene todos los datos';
+      }
+
     }
+
+    if (this.error != '') {
+      return;
+    }
+
+
 
     localStorage.removeItem('userJobsArray');
     localStorage.removeItem('isJobs');

@@ -34,7 +34,7 @@ export class MainComponent implements OnInit {
 
 
   busqueda(form) {
-    if (!(this.search.state != '' || this.search.country != '' || this.search.city != '')) {
+    if (!(this.search.state != '' || this.search.country != '' || this.search.city != '') && this.identity) {
       this.search.country = this.identity.country;
       this.search.state = this.identity.state;
       this.search.city = this.identity.city;

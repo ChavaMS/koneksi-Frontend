@@ -35,7 +35,6 @@ import { InteractionsService } from './services/interactions.service';
 import { SearchService } from './services/search.service';
 import { ComunicationService } from './services/comunication.service';
 import { UserJobsServices } from './services/user.jobs.service';
-import { RegisterNumberProductsComponent } from './components/register/register-number-products/register-number-products.component';
 import { UserProductsService } from './services/user.products.service';
 import { UserServicesService } from './services/user.services.service';
 
@@ -58,7 +57,6 @@ import { UserServicesService } from './services/user.services.service';
     RegisterJobsComponent,
     RegisterUserProductsComponent,
     RegisterUserServiceComponent,
-    RegisterNumberProductsComponent
   ],
   imports: [
     BrowserModule,

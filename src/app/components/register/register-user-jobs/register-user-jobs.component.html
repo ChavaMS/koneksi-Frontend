@@ -1,5 +1,10 @@
 <div class="container">
     <h2 class="text-center mb-5">Ingrese los datos de los oficios que seleccionó:</h2>
+    <div class="mt-5 mb-4 w-100 text-center">
+        <span *ngIf="this.error && this.error != ''" class="alert alert-danger">
+            {{ this.error }}
+        </span>
+    </div>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -47,7 +52,8 @@
                                             </label>
                                         </div>
                                         <div class="form-check disabled">
-                                            <input class="form-check-input" type="checkbox" [(ngModel)]="this.turnos[i].nocturno" #N="ngModel" name="N"
+                                            <input class="form-check-input" type="checkbox"
+                                                [(ngModel)]="this.turnos[i].nocturno" #N="ngModel" name="N"
                                                 id="gridRadios3" value="option3">
                                             <label class="form-check-label" for="gridRadios3">
                                                 Nocturno
@@ -61,9 +67,11 @@
                     </div>
                     <hr>
                 </div>
+                <div class="w-100  d-flex justify-content-between">
+                    <input type="button" class="btn btn-dark" (click)='goBack()' value="Regresar">
+                    <input type="submit" value="Continuar" class="btn btn-dark">
+                </div>
 
-
-                <input type="submit" value="Continuar" class="btn btn-dark">
             </form>
         </div>
         <div class="col-md-2"></div>

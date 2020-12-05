@@ -20,7 +20,6 @@ export class UserServicesService {
         this.url = GLOBAL.url;
     }
 
-
     saveUserService(userService: UserService, files, user): Observable<any> {
         const fd = new FormData();
         console.log(files);
@@ -39,17 +38,12 @@ export class UserServicesService {
         fd.append('schedule', userService.schedule);
         fd.append('id', user);
 
-        //let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-        return this._http.post(this.url + 'saveUserServices', fd);// { headers: headers });
+        return this._http.post(this.url + 'saveUserServices', fd);
     }
 
-    getUsersService(): Observable<any> {
+    getUsersService(page = 1): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-        return this._http.get(this.url + 'get-user-services', { headers: headers });
+        return this._http.get(this.url + 'get-user-services/1/' + page, { headers: headers });
     }
-
-
-
 }

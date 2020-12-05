@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Distance } from 'src/app/models/distance';
+import { Search } from 'src/app/models/search';
+import { ComunicationService } from 'src/app/services/comunication.service';
 import { InteractionsService } from 'src/app/services/interactions.service';
+import { SearchService } from 'src/app/services/search.service';
 import { UserServices } from 'src/app/services/user.service';
 import { UserServicesService } from 'src/app/services/user.services.service';
 import { GLOBAL } from '../../../services/global';
@@ -12,41 +15,116 @@ import { GLOBAL } from '../../../services/global';
 })
 export class ServicesResultComponent implements OnInit {
 
-  public userService;
   public url: string;
-  public identity;
+  public search: Search;
   public distance: Distance;
+  public isSearch: boolean;
+  public identity;
   public ratingMax;
+  public userService;
+  public numbers;
+
 
   constructor(
     private _userServices: UserServicesService,
     private _interactionService: InteractionsService,
-    private _userService: UserServices
-  ) { 
+    private _userService: UserServices,
+    private _searchService: SearchService,
+    private _comunicationService: ComunicationService
+  ) {
+    this.numbers = new Array();
     this.ratingMax = [1, 2, 3, 4, 5];
-    this.distance = new Distance('','','','');
+    this.distance = new Distance('', '', '', '');
     this.identity = this._userService.getIdentity();
     this.url = GLOBAL.url;
   }
 
   ngOnInit(): void {
+    this.getResponse();
     this.getUserServices();
   }
 
-  getUserServices() {
-    this._userServices.getUsersService().subscribe(response => {
+
+  //------------------SEARCH------------------------------------------
+  getResponse() {
+    this._comunicationService.sendObjectSearchObservable.subscribe(res => {
+      if (res) {
+        this.search = res;
+        this.isSearch = true;
+
+        this.getServiceSearch();
+
+      }
+    });
+  }
+
+  getServiceSearch(page = 1) {
+    if (this.isSearch) {
+      this._searchService.getSearchServices(this.search, page).subscribe(response => {
+        console.log(response);
+
+        if (response) {
+          this.userService = response.userServiceArray;
+          this.isSearch = true;
+
+          //Arreglo que indica el total de paginas
+          this.numbers = new Array();
+
+          for (let i = 0; i < response.total; i++) {
+            this.numbers[i] = (i + 1);
+          }
+
+          //Carga rating y distancias
+          this.getExtraContent();
+
+          this.scrollTop();
+        }
+
+      }, err => {
+
+      });
+    }
+  }
+  //------------------SEARCH------------------------------------------
+
+  //------------------NORMAL PAGE-------------------------------------
+  getUserServices(page = 1) {
+    console.log('entra');
+
+    this._userServices.getUsersService(page).subscribe(response => {
+      console.log('entra');
+
+
       if (response) {
-        console.log(response.result);
-        
-        this.userService = response.result;
+        this.userService = response.services;
+
+
+        //Arreglo que indica el total de paginas
+        this.numbers = new Array();
+        for (let i = 0; i < response.pages; i++) {
+          this.numbers[i] = (i + 1);
+        }
+
+        let scrollToTop = window.setInterval(() => {
+          let pos = window.pageYOffset;
+          if (pos > 0) {
+            window.scrollTo(0, pos - 20); // how far to scroll on each step
+          } else {
+            window.clearInterval(scrollToTop);
+          }
+        }, 16);
 
         this.getExtraContent();
+
+        this.scrollTop();
       }
     }, err => {
 
     });
   }
+  //------------------NORMAL PAGE-------------------------------------
 
+  //-------------------RATING--DISTANCIA------------------------------
   getExtraContent() {
     this.userService.forEach(element => {
 
@@ -79,24 +157,17 @@ export class ServicesResultComponent implements OnInit {
       }
     });
   }
+  //-------------------RATING--DISTANCIA------------------------------
 
-
-  efecto(indice: number) {
-    var rating = new Array();
-    rating[0] = document.getElementById("e1");
-    rating[1] = document.getElementById("e2");
-    rating[2] = document.getElementById("e3");
-    rating[3] = document.getElementById("e4");
-    rating[4] = document.getElementById("e5");
-
-    for (let i = 0; i < 5; i++) {
-      rating[i].classList.remove('fas');
-      rating[i].classList.add('far');
-    }
-    for (let i = 0; i <= indice; i++) {
-      rating[i].classList.remove('far');
-      rating[i].classList.add('fas');
-    }
-
+  /*---------------------SCROLL TOP-----------------------------------*/
+  scrollTop() {
+    let scrollToTop = window.setInterval(() => {
+      let pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 20); // how far to scroll on each step
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 16);
   }
 }

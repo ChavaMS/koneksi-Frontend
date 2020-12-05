@@ -37,19 +37,26 @@ export class SearchService {
     getSearchProducts(search, page = 1): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
         let params = JSON.stringify(search);
-        console.log(page);
-        
+
         return this._http.post(this.url + 'search-products/' + page, params, { headers: headers });
 
     }
 
-    
+
     getSearchJobs(search, page = 1): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
         let params = JSON.stringify(search);
-        console.log(page);
-        
+
         return this._http.post(this.url + 'search-jobs/' + page, params, { headers: headers });
+
+    }
+
+    getSearchServices(search, page = 1): Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        let params = JSON.stringify(search);
+
+
+        return this._http.post(this.url + 'search-services/' + page, params, { headers: headers });
 
     }
 

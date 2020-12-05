@@ -1,10 +1,10 @@
 <div class="container k-container text-center">
     <h3 class="mt-3">Ingrese los datos del servicio que presta:</h3>
-<!--     <div class="mt-5">
+    <div class="mt-5">
         <span *ngIf="this.error != ''" class="alert alert-danger">
             {{ this.error }}
         </span>
-    </div> -->
+    </div>
     <div class="row ">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -68,8 +68,8 @@
                     </div>
                 </div>
 
-                <div class="text-center mt-5">
-                    <input type="button" value="Regresar" class="mx-2 btn btn-dark">
+                <div class=" d-flex justify-content-between mt-5">
+                    <input (click)="sendToPick()" type="button" value="Regresar" class="mx-2 btn btn-dark">
                     <input type="submit" value="Continuar" class="mx-2 btn btn-dark">
                 </div>
             </form>

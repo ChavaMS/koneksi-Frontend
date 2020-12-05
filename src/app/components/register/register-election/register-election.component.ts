@@ -15,9 +15,9 @@ export class RegisterElectionComponent implements OnInit {
     this.getSelection();
   }
 
-  getSelection(){
+  getSelection() {
     this.isProductsService = localStorage.getItem('productService');
-
+    localStorage.removeItem('productService');
   }
 
 }

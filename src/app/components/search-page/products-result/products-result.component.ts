@@ -25,7 +25,7 @@ export class ProductsResultComponent implements OnInit {
   public resultProducts;
   public ratingMax;
   public numbers;
-  
+
   private identity;
 
 
@@ -50,6 +50,8 @@ export class ProductsResultComponent implements OnInit {
     this.getProducts();
   }
 
+
+  /*----------------------------SEARCH---------------------------------*/
   getResponse() {
     this._comunicationService.sendObjectSearchObservable.subscribe(res => {
       if (res) {
@@ -70,16 +72,25 @@ export class ProductsResultComponent implements OnInit {
           this.resultProducts = response.userProductsArray;
           this.isSearch = true;
 
-          console.log(this.resultProducts);
-          
           //Arreglo que indica el total de paginas
           this.numbers = new Array();
 
           for (let i = 0; i < response.total; i++) {
             this.numbers[i] = (i + 1);
           }
+
+          let scrollToTop = window.setInterval(() => {
+            let pos = window.pageYOffset;
+            if (pos > 0) {
+              window.scrollTo(0, pos - 20); // how far to scroll on each step
+            } else {
+              window.clearInterval(scrollToTop);
+            }
+          }, 16);
           //Carga rating y distancias
           this.getExtraContent();
+
+          this.scrollTop();
         }
 
       }, err => {
@@ -87,7 +98,9 @@ export class ProductsResultComponent implements OnInit {
       });
     }
   }
+  /*----------------------------SEARCH---------------------------------*/
 
+  /*----------------------------NORMAL PAGE---------------------------------*/
   getProducts(page = 1) {
     this._searchService.getProducts(page).subscribe(response => {
 
@@ -103,6 +116,8 @@ export class ProductsResultComponent implements OnInit {
 
         //Carga rating y distancias
         this.getExtraContent();
+
+        this.scrollTop();
 
       }
 
@@ -144,30 +159,22 @@ export class ProductsResultComponent implements OnInit {
     });
   }
 
+
+  /*----------------------------PROFILE---------------------------------*/
   profileProducts(id) {
     this._router.navigate(['user-products/' + id]);
   }
 
-  efecto(indice: number) {
-    console.log('si entrs');
-
-    var rating = new Array();
-    rating[0] = document.getElementById("e1");
-    rating[1] = document.getElementById("e2");
-    rating[2] = document.getElementById("e3");
-    rating[3] = document.getElementById("e4");
-    rating[4] = document.getElementById("e5");
-
-    for (let i = 0; i < 5; i++) {
-      rating[i].classList.remove('fas');
-      rating[i].classList.add('far');
-    }
-    for (let i = 0; i <= indice; i++) {
-      rating[i].classList.remove('far');
-      rating[i].classList.add('fas');
-    }
-
-
+  /*----------------------------SCROLL TOP-----------------------------*/
+  scrollTop() {
+    let scrollToTop = window.setInterval(() => {
+      let pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 20); // how far to scroll on each step
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 16);
   }
 
 }

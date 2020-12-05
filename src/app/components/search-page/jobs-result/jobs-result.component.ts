@@ -44,10 +44,9 @@ export class JobsResultComponent implements OnInit {
     this.identity = this._userService.getIdentity();
     this.getResponse();
     this.getJobs();
+  }
 
-
-  } 
-
+  /*---------------------------SEARCH PAGE------------------------------------*/
   getResponse() {
     this._comunicationService.sendObjectSearchObservable.subscribe(res => {
       if (res) {
@@ -61,9 +60,6 @@ export class JobsResultComponent implements OnInit {
   }
 
   getJobsSearch(page = 1) {
-
-    console.log(this.search);
-    
     if (this.isSearch) {
       this._searchService.getSearchJobs(this.search, page).subscribe(response => {
 
@@ -71,8 +67,6 @@ export class JobsResultComponent implements OnInit {
           this.resultJobs = response.userJobsArray;
           this.isSearch = true;
 
-          console.log(this.resultJobs);
-          
           //Arreglo que indica el total de paginas
           this.numbers = new Array();
 
@@ -81,6 +75,8 @@ export class JobsResultComponent implements OnInit {
           }
           //Carga rating y distancias
           this.getExtraContent();
+
+          this.scrollTop();
         }
 
       }, err => {
@@ -88,7 +84,9 @@ export class JobsResultComponent implements OnInit {
       });
     }
   }
+  /*---------------------------SEARCH PAGE------------------------------------*/
 
+  /*--------------------------NORMAL PAGE--------------------------------------*/
   getJobs(page = 1) {
     this._searchService.getJobs(page).subscribe(response => {
 
@@ -104,6 +102,7 @@ export class JobsResultComponent implements OnInit {
         //Carga el contenido faltante de los oficios
         this.getExtraContent();
 
+        this.scrollTop();
 
       }
 
@@ -144,9 +143,23 @@ export class JobsResultComponent implements OnInit {
     });
   }
 
+
+  /*--------------------------PROFILES---------------------------------*/
   profileJobs(id) {
     this._router.navigate(['user-jobs/' + id]);
 
+  }
+
+  /*-----------------------SCROLL TOP-------------------------------*/
+  scrollTop() {
+    let scrollToTop = window.setInterval(() => {
+      let pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 20); // how far to scroll on each step
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 16);
   }
 
 }
