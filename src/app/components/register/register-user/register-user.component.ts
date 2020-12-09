@@ -24,6 +24,7 @@ export class RegisterUserComponent implements OnInit {
 
   public user: User;
   public files;
+  public type: string;
   public suburb: string;
   public postalCode: string;
   public street: string;
@@ -64,7 +65,7 @@ export class RegisterUserComponent implements OnInit {
 
   goBack() {
     console.log(this.isUserProducts);
-    
+
     if (this.isUserProducts) {
       localStorage.removeItem('userProductsArray');
       localStorage.removeItem('userProductsImages');
@@ -77,7 +78,7 @@ export class RegisterUserComponent implements OnInit {
       localStorage.removeItem('isUserService');
 
       this._router.navigate(['register-user-service']);
-    
+
     } else if (this.isJobs) {
       localStorage.removeItem('userJobsArray');
       localStorage.removeItem('isJobs');
@@ -85,7 +86,7 @@ export class RegisterUserComponent implements OnInit {
       localStorage.removeItem('NombreOficios');
 
       this._router.navigate(['register-jobs']);
-    
+
     }
   }
 
@@ -103,6 +104,19 @@ export class RegisterUserComponent implements OnInit {
         address[0] = this.suburb;
         address[1] = this.street;
         address[2] = this.postalCode;
+
+        if (this.isJobs) {
+          this.type = 'userJob';
+        } else if (this.isUserProducts) {
+          this.type = 'userProduct';
+        } else if (this.isUserServices) {
+          this.type = 'userService';
+        } else {
+          this.type = 'client';
+        }
+        
+        this.user.type = this.type;
+
         this._userService.registerUser(this.user, address, this.files[0]).subscribe(response => {
           if (response) {
             var userId = response.user._id;

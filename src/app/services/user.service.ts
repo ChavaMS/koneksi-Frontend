@@ -22,14 +22,18 @@ export class UserServices {
         fd.append('email', email);
         fd.append('coverPage', file);
 
-        //let params = JSON.stringify(user);
-        //let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        //console.log(fd);
-        
         return this._http.post(this.url + 'updateCoverPage', fd);
-    } 
+    }
 
-    registerUser(user: User, addres: Array<string> ,file: File): Observable<any> {
+    updateAvatar(email: string, file: File): Observable<any> {
+        const fd = new FormData();
+        fd.append('email', email);
+        fd.append('avatar', file);
+
+        return this._http.post(this.url + 'updateAvatar', fd);
+    }
+
+    registerUser(user: User, addres: Array<string>, file: File): Observable<any> {
         const fd = new FormData();
         fd.append('name', user.name);
         fd.append('surname', user.surname);
@@ -39,18 +43,29 @@ export class UserServices {
         fd.append('state', user.state);
         fd.append('city', user.city);
         fd.append('image', file);
+        fd.append('type', user.type);
         fd.append('suburb', addres[0]);
         fd.append('street', addres[1]);
         fd.append('cp', addres[2]);
 
-
-        //let params = JSON.stringify(user);
-        //let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        //console.log(fd);
-        
         return this._http.post(this.url + 'saveUser', fd);
-    } 
+    }
 
+    updateUser(user): Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', this.getToken());
+        let params = JSON.stringify(user);
+
+        return this._http.put(this.url + 'update-user/' + user._id, params, { headers: headers });
+    }
+
+    updateLocation(user): Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', this.getToken());
+        let params = JSON.stringify(user);
+        console.log(user);
+        
+        return this._http.put(this.url + 'update-location/' + user._id, params, { headers: headers });
+    }
+ 
     signup(user, gettoken = null): Observable<any> {
         if (gettoken != null) {
             user.gettoken = gettoken;

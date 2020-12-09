@@ -32,7 +32,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="btn dropdown-item" (click)="perfil()">Mi perfil</a>
-            <a class="btn dropdown-item">Configuración</a>
+            <a class="btn dropdown-item"  [routerLink]="['edit-profile']">Configuración</a>
             <div class="dropdown-divider"></div>
             <a (click)="logout()" class="btn dropdown-item">Cerrar sesión</a>
           </div>

@@ -16,6 +16,8 @@ export class LocationComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    console.log('cargado');
+    console.log(this.lat);
     
   }
 

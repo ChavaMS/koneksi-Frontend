@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http'
 
 //CUSTOM MODULE
 import { SearchPageModule } from './components/search-page/search-page.module';
+import { EditProfileModule } from './components/profile-edit/edit-profile.module';
+import { GeneralModule } from './modules/app.general.module';
 
 //Componentes
 import { AppComponent } from './app.component';
@@ -28,7 +30,6 @@ import { RegisterUserServiceComponent } from './components/register/register-use
 //MAPS
 import { AgmCoreModule } from '@agm/core';
 
-
 //Servicios
 import { UserServices } from './services/user.service';
 import { InteractionsService } from './services/interactions.service';
@@ -39,6 +40,7 @@ import { UserProductsService } from './services/user.products.service';
 import { UserServicesService } from './services/user.services.service';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,7 @@ import { UserServicesService } from './services/user.services.service';
     UserServiceComponent,
     UserJobsComponent,
     MainInfoComponent,
-    LocationComponent,
+    //LocationComponent,
     ActivityComponent,
     CommentsComponent,
     ContactComponent,
@@ -56,18 +58,20 @@ import { UserServicesService } from './services/user.services.service';
     RegisterUserJobsComponent,
     RegisterJobsComponent,
     RegisterUserProductsComponent,
-    RegisterUserServiceComponent,
+    RegisterUserServiceComponent
   ],
   imports: [
     BrowserModule,
     routing,
     FormsModule,
     HttpClientModule,
-    AgmCoreModule.forRoot({
+    /* AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDgRN1AR5CnGjgdcc3f93CzMho80a2yWog'
-    }),
+    }), */
     SearchPageModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EditProfileModule,
+    GeneralModule
   ],
   providers: [
     appRoutingProviders,
