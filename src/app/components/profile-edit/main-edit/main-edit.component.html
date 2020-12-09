@@ -1,0 +1,26 @@
+<div class="container k-container-products">
+    <div class="row k-container-main-edit">
+        <div class="col-md-1"></div>
+        <div class="col-md-5 my-auto k-float">
+            <div class="border k-li-options">
+                <ul class="p-0 my-auto">
+                    <li class="k-li">
+                        <a class="nav-link text-dark" [routerLink]="['user-edit']" routerLinkActive="k-router-link-active"  href="">Datos generales</a>
+                    </li>
+                    <li  class="k-li">
+                        <a class="nav-link text-dark" [routerLink]="['location-edit']" routerLinkActive="k-router-link-active"  href="">Datos ubicación</a>
+                    </li>
+                    <li class="k-li" >
+                        <a *ngIf="this.identity.type == 'userProduct'" class="nav-link text-dark" [routerLink]="['products-edit']" routerLinkActive="k-router-link-active"  href="">Editar productos</a>
+                        <a *ngIf="this.identity.type == 'userJob'" class="nav-link text-dark" [routerLink]="['jobs-edit']" routerLinkActive="k-router-link-active"  href="">Editar oficios</a>
+                        <a *ngIf="this.identity.type == 'userService'" class="nav-link text-dark" [routerLink]="['service-edit']" routerLinkActive="k-router-link-active"  href="">Editar servicios</a>
+                    </li>
+                </ul>
+            </div>                            
+        </div>
+        <div class="col-md-5">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

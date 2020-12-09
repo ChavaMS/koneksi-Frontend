@@ -1,0 +1,29 @@
+.k-container-products{
+    min-height: 600px;
+    
+}
+
+.padre {
+    display: table;
+    height:200px;
+}
+.hijo {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.k-li{
+    list-style: none;
+}
+
+.k-router-link-active{
+    background-color: cornflowerblue;
+}
+
+.k-container-main-edit{
+    min-height: 500px;
+}
+
+.k-li-options{
+    min-height: 100%;
+}
