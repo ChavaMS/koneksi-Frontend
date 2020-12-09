@@ -183,28 +183,45 @@ export class RegisterUserComponent implements OnInit {
                   localStorage.removeItem('isUserService');
 
                 }
+                
+                // Redirección
+                this._router.navigate(["login"]);
 
               }
             }, err => {
               console.log(err);
               this.status = "Error al subir las imaganes, recargue la pagina e intente de nuevo.";
-
+              this.scrollTop();
             });
           }
 
         }, err => {
           if (err)
             this.status = "Ha ocurrido un error, puede que el usuario ya se haya registrado.";
+            this.scrollTop();
 
         })
       } else {
         this.status = "Ingrese todo los archivos.";
+        this.scrollTop();
       }
 
     } else {
       this.status = "Verifique el correo o la contraseña.";
+      this.scrollTop();
     }
 
+    this.scrollTop();
+    return false;
+  }
+
+  onPhotoSelected(event: HtmlInputEvent): void {
+    if (event.target.files && event.target.files[0]) {
+      this.files.push(<File>event.target.files[0]);
+    }
+  }
+
+  scrollTop(): void{
     if (this.status != null) {
       let scrollToTop = window.setInterval(() => {
         let pos = window.pageYOffset;
@@ -214,14 +231,6 @@ export class RegisterUserComponent implements OnInit {
           window.clearInterval(scrollToTop);
         }
       }, 16);
-    }
-
-    return false;
-  }
-
-  onPhotoSelected(event: HtmlInputEvent): void {
-    if (event.target.files && event.target.files[0]) {
-      this.files.push(<File>event.target.files[0]);
     }
   }
 

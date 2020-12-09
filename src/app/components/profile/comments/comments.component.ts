@@ -9,6 +9,8 @@ import { GLOBAL } from '../../../services/global';
 import { Comments } from '../../../models/comments';
 import { UserJobs } from 'src/app/models/userJobs';
 
+declare var $: any;
+
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
@@ -23,8 +25,6 @@ export class CommentsComponent implements OnInit {
   @Input() isUserProducts: boolean;
   @Input() isUserService: boolean;
   @Input() isUserJobs: boolean;
-
-
 
   private token: string;
   private identity: string;
@@ -106,5 +106,11 @@ export class CommentsComponent implements OnInit {
         this.status = 'error';
       }
     });
+
+    $('.collapse').collapse('toggle');
+
   }
+
+  
+
 }

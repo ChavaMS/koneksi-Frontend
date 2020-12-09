@@ -64,6 +64,7 @@ export class RegisterUserJobsComponent implements OnInit {
     }
 
     if (this.error != '') {
+      this.scrollTop();
       return;
     }
 
@@ -83,6 +84,17 @@ export class RegisterUserJobsComponent implements OnInit {
 
   turno(turno: string, indice: number) {
     this.userJobsArray[indice].schedule.concat(turno);
+  }
+
+  scrollTop(): void{
+    let scrollToTop = window.setInterval(() => {
+      let pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 20); // how far to scroll on each step
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 16);
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="k-navigation col-lg-12">
   <nav class=" py-0 navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
-      <img class="k-logo" src="../assets/img/Koneksi.png" alt="">
+      <img class="k-logo" src="../assets/img/Koneksi_Blanco.png" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,38 +9,19 @@
     </button>
 
     <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
-      <div class="w-100">
-
-        <!-------------------FORM VISTO DESDE ESCRITORIO--------------->
-        <!-- <form class="k-FormFull form-inline my-2 my-lg-0">
-          <div class="mx-md-auto w-50">
-            <input class="form-control mr-sm-2" style="width: 70%;" type="search" placeholder="Search"
-              aria-label="Search">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-          </div>
-        </form>
-        ------------------FORM VISTO DESDE EL CELULAR--------------->
-        <!-- <form class="k-FormMobile form-inline my-2 my-lg-0">
-          <div class="mx-md-auto w-100">
-            <input class="form-control" style="width: 100%;" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-          </div>
-        </form> -->
-      </div> 
-      <!-------------------------------------------------------------->
 
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active mt-1">
-          <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+        <li class="nav-item active">
+          <a class="nav-link"[routerLink]="['/login']">Inicio <span class="sr-only">(current)</span></a>
         </li>
-        <li *ngIf="!identity" [routerLink]="['/login']" class="nav-item  mt-1">
-          <a class="nav-link" href="#">Ingresa</a>
+        <li *ngIf="!identity"  class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']">Ingresa</a>
         </li>
-        <li *ngIf="!identity" class="nav-item  mt-1">
-          <a class="nav-link" href="#">Regístrate</a>
+        <li *ngIf="!identity" class="nav-item">
+          <a class="nav-link" [routerLink]="['/register-election']">Regístrate</a>
         </li>
-        <li class="nav-item  mt-1">
-          <a class="nav-link" href="#">Contáctanos</a>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']">Contáctanos</a>
         </li>
         <li *ngIf="identity" class="nav-item dropdown  dropleft">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -50,7 +31,7 @@
             <span>{{identity.name}}</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="btn dropdown-item">Mi perfil</a>
+            <a class="btn dropdown-item" (click)="perfil()">Mi perfil</a>
             <a class="btn dropdown-item">Configuración</a>
             <div class="dropdown-divider"></div>
             <a (click)="logout()" class="btn dropdown-item">Cerrar sesión</a>
@@ -66,21 +47,41 @@
   <!--CARGA AQUI LOS COMPONENTES DE LAS RUTAS-->
   <router-outlet></router-outlet>
 
+  
   <footer class="mt-2 bg-dark">
-    <div class="row p-4 k-footer w-75 m-auto">
-      <div class="col-md-4 col-12 p-0">
+    <div class="row p-4 k-footer w-95 m-auto">
+      <div class="col-md-3 col-12 text-center">
+        <a href="#">
+          <img class="k-logo-empresa" src="../assets/img/Logo_Empresa_Blanco.png" alt="">
+        </a>
+        <small>&copy; Copyright 2020, Koneksi Developers Company</small>
+      </div>
+      <div class="col-md-2 col-12">
         <ul>
           <li>Aviso de privacidad</li>
           <li>Acerca de nosotros</li>
           <li>Historia</li>
+          <li>Términos y condiciones</li>
+          <li>Contacto</li>
         </ul>
+        
       </div>
-      <div class="col-md-4 col-12 p-3">
-          <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, accusamus?</p>
+      <div class="col-md-7 col-12 p-3 k-redes-sociales">
+          <p class="text-center">¡Síguenos en nuestras redes sociales!</p>
+          <p class="text-center">Nos importa tu opinión y en caso de que tengas alguna duda con gusto te atenderemos</p>
+          <a href="#" class="kf py-0"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="kf py-0"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="kf py-0"><i class="fab fa-instagram"></i></a>
       </div>
-      <div class="col-md-4 col-12 p-3">
-          <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, ipsum?</p>
+      <!-- Redes sociales en vertical -->
+      <!--
+      <div class="col-md-1 col-12">
+        <a href="#" class="kf d-block p-0"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="kf d-block p-0"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="kf d-block p-0"><i class="fab fa-instagram"></i></a>
       </div>
+      -->
+      <!-- Redes sociales en vertical -->
     </div>
   </footer>
 </div>

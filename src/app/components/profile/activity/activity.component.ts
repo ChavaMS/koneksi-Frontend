@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { User } from 'src/app/models/user';
 import { UserJobs } from 'src/app/models/userJobs';
 import { UserProducts } from 'src/app/models/userProducts';
 import { UserService } from 'src/app/models/userService';
@@ -19,6 +20,10 @@ export class ActivityComponent implements OnInit {
   @Input() isUserService: boolean;
   @Input() isUserJobs: boolean;
 
+  @Input() user: User;
+
+
+
   url: String;
   public activity: string;
   public selectAnterior: string;
@@ -30,6 +35,10 @@ export class ActivityComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    console.log(this.user);
+    
+
     if (this.isUserProducts) {
       this.activity = 'Productos';
     

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserServices } from '../../services/user.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../../models/user';
 import { UserService } from '../../models/userService';
+import { UserServicesService } from 'src/app/services/user.services.service';
 
 @Component({
   selector: 'app-user-service',
@@ -16,7 +16,7 @@ export class UserServiceComponent implements OnInit {
   public userService: UserService;
 
   constructor(
-    private _userService: UserServices,
+    private _userService: UserServicesService,
     private _route: ActivatedRoute,
     private _router: Router
   ) {
@@ -35,11 +35,14 @@ export class UserServiceComponent implements OnInit {
   }
 
   getUser(id) {
-    this._userService.getUserProducts(id).subscribe(
+    this._userService.getOneUserService(id).subscribe(
       response => {
-        if (response.user && response.products) {
+        console.log(response.user[0]);
+        console.log(response.services[0]);
+        
+        if (response.user) {
           this.user = response.user[0];
-          this.userService = response.products;
+          this.userService = response.services[0];
         } else {
           status = 'error';
         }

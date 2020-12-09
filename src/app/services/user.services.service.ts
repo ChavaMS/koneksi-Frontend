@@ -46,4 +46,9 @@ export class UserServicesService {
 
         return this._http.get(this.url + 'get-user-services/1/' + page, { headers: headers });
     }
+
+    getOneUserService(id): Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this._http.get(this.url + 'get-user-services/' + id , { headers: headers });
+    }
 }

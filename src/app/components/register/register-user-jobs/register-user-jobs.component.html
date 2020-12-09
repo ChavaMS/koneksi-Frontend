@@ -1,5 +1,5 @@
 <div class="container">
-    <h2 class="text-center mb-5">Ingrese los datos de los oficios que seleccionó:</h2>
+    <h2 class="text-center mb-5">Ingrese los datos de los oficios que seleccionó</h2>
     <div class="mt-5 mb-4 w-100 text-center">
         <span *ngIf="this.error && this.error != ''" class="alert alert-danger">
             {{ this.error }}
@@ -18,18 +18,18 @@
                         <div class="col-md-10">
 
                             <div class="form-group row">
-                                <label for="description" class="col-sm-2 col-form-label">Descricpión</label>
+                                <label for="description" class="col-sm-2 col-form-label">Descripción</label>
                                 <div class="col-sm-10">
                                     <textarea [(ngModel)]="this.userJobsArray[i].description" #description="ngModel"
                                         class="form-control w-100" name="description" id="" cols="60"
-                                        rows="5"></textarea>
+                                        rows="5" placeholder="Inserte aquí una descripción de su oficio"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="tags" class="col-sm-2 col-form-label">Tags</label>
+                                <label for="tags" class="col-sm-2 col-form-label">Etiquetas</label>
                                 <div class="col-sm-10">
                                     <input [(ngModel)]="this.userJobsArray[i].tags" #tags="ngModel" type="text"
-                                        name="tags" class="form-control" id="tags">
+                                        name="tags" class="form-control" id="tags" placeholder="Ejemplo: mesas, sillas, armario">
                                 </div>
                             </div>
                             <fieldset class="form-group">

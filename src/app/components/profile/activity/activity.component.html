@@ -1,10 +1,10 @@
 <div class="mb-1">
-    <button type="button" class="w-50 rounded-0 btn btn-dark" (click)="cambiarVista('des')">Descripción</button>
-    <button type="button" *ngIf="this.isUserProducts" class="w-50 rounded-0 btn btn-dark"
+    <button type="button" *ngIf="this.user.type == 'userService'" class="w-100 rounded-0 btn btn-dark">Descripción</button>
+    <button type="button" *ngIf="this.isUserProducts" class="w-100 rounded-0 btn btn-dark"
         (click)="cambiarVista('pro')">{{ activity }}</button>
 
     <div class="dropdown d-inline" *ngIf="this.isUserJobs">
-        <button class="w-50 rounded-0 btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
+        <button class="w-100 rounded-0 btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{ activity }}
         </button>
@@ -56,7 +56,6 @@
 </div>
 <!---------------------------------------CARUSEL DE PRODUCTOS-------------------------------------------------->
 
-<div class="text-center d-none" id="descripcion">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quasi voluptates
-        eveniet facilis deleniti eius numquam voluptate unde a sunt?</p>
+<div class="text-center" *ngIf="this.user.type == 'userService'" id="descripcion">
+    <p>{{service.description}}</p>
 </div>

@@ -36,5 +36,22 @@ export class AppComponent {
     this.identity = null;
     this._router.navigate(['/']);
   }
+
+  perfil() {
+    this.identity = this._userService.getIdentity();
+    console.log("Quedé");
+
+    switch(this.identity.type) {
+      case 'userProduct': this._router.navigate(['/user-products/' + this.identity._id]);
+        break;
+      case 'userService': this._router.navigate(['/user-service/' + this.identity._id]);
+        break;
+      case 'userJob': this._router.navigate(['/user-jobs/' + this.identity._id]);
+        break;
+      case 'client': this._router.navigate(['/user-client/' + this.identity._id]);
+        break;
+    }
+
+  }
 }
 
