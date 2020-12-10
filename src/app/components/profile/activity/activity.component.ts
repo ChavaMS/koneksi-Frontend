@@ -22,8 +22,6 @@ export class ActivityComponent implements OnInit {
 
   @Input() user: User;
 
-
-
   url: String;
   public activity: string;
   public selectAnterior: string;
@@ -31,13 +29,9 @@ export class ActivityComponent implements OnInit {
   constructor() {
     //this.slide = 0;
     this.url = GLOBAL.url;
-
   }
 
   ngOnInit(): void {
-
-    console.log(this.user);
-    
 
     if (this.isUserProducts) {
       this.activity = 'Productos';
@@ -75,6 +69,24 @@ export class ActivityComponent implements OnInit {
       document.getElementById('descripcion').classList.remove('d-block');
       document.getElementById('descripcion').classList.add('d-none');
     }
-
   }
+
+  cambiarVistaServicios(option: string) {
+    if (option == 'des') {
+      document.getElementById('serviceUserProfile').classList.remove('d-block');
+      document.getElementById('serviceUserProfile').classList.add('d-none');
+
+      document.getElementById('descripcionServicio').classList.remove('d-none');
+      document.getElementById('descripcionServicio').classList.add('d-block');
+    }
+
+    if (option == 'img') {
+      document.getElementById('serviceUserProfile').classList.remove('d-none');
+      document.getElementById('serviceUserProfile').classList.add('d-block');
+
+      document.getElementById('descripcionServicio').classList.remove('d-block');
+      document.getElementById('descripcionServicio').classList.add('d-none');
+    }
+  }
+
 }

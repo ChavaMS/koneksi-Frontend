@@ -1,5 +1,10 @@
 <div class="mb-1">
-    <button type="button" *ngIf="this.user.type == 'userService'" class="w-100 rounded-0 btn btn-dark">Descripción</button>
+    <button type="button" *ngIf="this.user.type == 'userService'" (click)="cambiarVistaServicios('des')"
+                    class="w-50 rounded-0 btn btn-dark">Descripción</button>
+    <button type="button" *ngIf="this.user.type == 'userService'" (click)="cambiarVistaServicios('img')"
+                    class="w-50 rounded-0 btn btn-dark">Imágenes</button>
+
+
     <button type="button" *ngIf="this.isUserProducts" class="w-100 rounded-0 btn btn-dark"
         (click)="cambiarVista('pro')">{{ activity }}</button>
 
@@ -56,6 +61,37 @@
 </div>
 <!---------------------------------------CARUSEL DE PRODUCTOS-------------------------------------------------->
 
-<div class="text-center" *ngIf="this.user.type == 'userService'" id="descripcion">
+<!---------------------------------------DESCRIPCION SERVICIOS-------------------------------------------------->
+<div class="text-center" *ngIf="this.user.type == 'userService'" id="descripcionServicio">
     <p>{{service.description}}</p>
 </div>
+<!---------------------------------------DESCRIPCION SERVICIOS-------------------------------------------------->
+
+<!---------------------------------------CARRUSEL SERVICIOS-------------------------------------------------->
+<div id="serviceUserProfile" *ngIf="this.user.type == 'userService'" class="carousel slide d-none" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#productsUserProfile" *ngFor="let item of this.service.images;let i = index; let isFirst = first"
+            [ngClass]="{active:isFirst}" [attr.data-slide-to]="i"></li>
+    </ol>
+
+    <div class="carousel-inner k-carousel-inner">
+        <div class="carousel-item" *ngFor="let item of this.service.images;let index = index;let isFirst = first"
+            [ngClass]="{active:isFirst}">
+            <img *ngIf="!item" src="../../../assets/img/banner.jpg" class="k-img-products d-block w-100 h-100"
+                alt="...">
+            <img *ngIf="item" src="{{url+'get-service-image/'+item}}"
+                class="k-img-products d-block w-100 h-100" alt="...">
+        </div>
+    </div>
+
+    <a class="carousel-control-prev" href="#serviceUserProfile" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#serviceUserProfile" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<!---------------------------------------CARRUSEL SERVICIOS-------------------------------------------------->
+

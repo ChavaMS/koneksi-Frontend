@@ -3,6 +3,9 @@ import { User } from 'src/app/models/user';
 import { InteractionsService } from 'src/app/services/interactions.service';
 import { GLOBAL } from '../../../services/global';
 
+import { UserServices } from '../../../services/user.service';
+
+
 @Component({
   selector: 'app-main-info',
   templateUrl: './main-info.component.html',
@@ -15,32 +18,38 @@ export class MainInfoComponent implements OnInit {
   @Input() iUserService: boolean;
   @Input() isUserJob: boolean;
 
+  private token: string;
   public rating;
   public ratingMax;
   public url: String;
+  public rate: ObjetoRating;
+
+  stars: number[] = [1, 2, 3, 4, 5];
+  selectedValue: number;
 
   constructor(
-    private _interactionService: InteractionsService
+    private _interactionService: InteractionsService,
+    private _UserService: UserServices
   ) { 
+    this.token = this._UserService.getToken();
     this.url = GLOBAL.url;
     this.ratingMax = [1,2,3,4,5];
+    this.rate = new ObjetoRating ("", 0);
   } 
 
   ngOnInit(): void {
-
     this.cargarRating();
-  
   }
 
-  cargarRating(){
+  cargarRating() {
     this._interactionService.getRating(this.user._id).subscribe(response => {
+      
       if(response){
-        this.rating = response;
-        console.log(this.rating);
-        
+        this.rating = response.promedio;
+        console.log('cargarRating Rating:  ' + this.rating);
+        this.selectedValue = this.rating;
       }
     }, err => {
-
     });
   }
 
@@ -61,7 +70,23 @@ export class MainInfoComponent implements OnInit {
       rating[i].classList.add('fas');
     }
 
-
   }
 
+
+  subirRating(star) {
+    this.selectedValue = star;
+
+    this.rate.userSaved = this.user._id;
+    this.rate.rating = star;
+
+    this._interactionService.saveRating(this.token, this.rate).subscribe(response => {});
+  }
+
+}
+
+export class ObjetoRating {
+    constructor(
+      public userSaved: string,
+      public rating: number
+    ){}
 }

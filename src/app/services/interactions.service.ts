@@ -38,6 +38,13 @@ export class InteractionsService {
         return this._http.post(this.url + 'getRating/' + id, { headers: headers });
     }
 
+    saveRating(token, rating): Observable<any> {
+        let params = JSON.stringify(rating);
+        let headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', token);
+
+        return this._http.post( this.url + 'saveRating', params, {headers: headers} )
+    }
+
     getDistance(distance): Observable<any> {
         let params = JSON.stringify(distance);
 
