@@ -1,6 +1,6 @@
 <div class="k-navigation col-lg-12">
   <nav class=" py-0 navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" [routerLink]="['/login']"> <!-- LLEVAR A INICIO -->
       <img class="k-logo" src="../assets/img/Koneksi_Blanco.png" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -12,16 +12,16 @@
 
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link"[routerLink]="['/login']">Inicio <span class="sr-only">(current)</span></a>
+          <a class="nav-link" [routerLink]="['/search-page/jobs-result']"> Búsqueda <span class="sr-only">(current)</span></a>
         </li>
         <li *ngIf="!identity"  class="nav-item">
-          <a class="nav-link" [routerLink]="['/login']">Ingresa</a>
+          <a class="nav-link" [routerLink]="['/login']"> Ingresa </a>
         </li>
         <li *ngIf="!identity" class="nav-item">
-          <a class="nav-link" [routerLink]="['/register-election']">Regístrate</a>
+          <a class="nav-link" [routerLink]="['/register-election']"> Regístrate </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/login']">Contáctanos</a>
+          <a class="nav-link" [routerLink]="['/login']"> Contáctanos </a> <!-- LLEVAR A PÁGINA DE CONTACTO DE EMRPESA -->
         </li>
         <li *ngIf="identity" class="nav-item dropdown  dropleft">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -51,7 +51,7 @@
   <footer class="mt-2 bg-dark">
     <div class="row p-4 k-footer w-95 m-auto">
       <div class="col-md-3 col-12 text-center">
-        <a href="#">
+        <a href="#"> <!-- LLEVAR A PÁGINA DE LA EMPRESA -->
           <img class="k-logo-empresa" src="../assets/img/Logo_Empresa_Blanco.png" alt="">
         </a>
         <small>&copy; Copyright 2020, Koneksi Developers Company</small>
@@ -73,15 +73,6 @@
           <a href="#" class="kf py-0"><i class="fab fa-twitter"></i></a>
           <a href="#" class="kf py-0"><i class="fab fa-instagram"></i></a>
       </div>
-      <!-- Redes sociales en vertical -->
-      <!--
-      <div class="col-md-1 col-12">
-        <a href="#" class="kf d-block p-0"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="kf d-block p-0"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="kf d-block p-0"><i class="fab fa-instagram"></i></a>
-      </div>
-      -->
-      <!-- Redes sociales en vertical -->
     </div>
   </footer>
 </div>

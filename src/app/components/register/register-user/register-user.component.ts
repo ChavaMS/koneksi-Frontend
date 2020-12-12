@@ -14,7 +14,6 @@ interface HtmlInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
 }
 
-
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
@@ -64,8 +63,6 @@ export class RegisterUserComponent implements OnInit {
   }
 
   goBack() {
-    console.log(this.isUserProducts);
-
     if (this.isUserProducts) {
       localStorage.removeItem('userProductsArray');
       localStorage.removeItem('userProductsImages');
@@ -120,11 +117,9 @@ export class RegisterUserComponent implements OnInit {
         this._userService.registerUser(this.user, address, this.files[0]).subscribe(response => {
           if (response) {
             var userId = response.user._id;
-            console.log(response);
 
             this._userService.updateCoverPage(this.user.email, this.files[1]).subscribe(response => {
               if (response) {
-
 
                 //----------------OFICIOS------------------------------
                 if (this.isJobs && this.isJobs == 'true') {
@@ -146,8 +141,8 @@ export class RegisterUserComponent implements OnInit {
                   });
 
                 }
-                //--------------------------PRODUCTOS-------------------------
 
+                //--------------------------PRODUCTOS-------------------------
                 if (this.isUserProducts) {
 
                   this._comunicationService.obtenerImagenesProductos.subscribe(response => {
