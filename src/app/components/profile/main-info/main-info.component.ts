@@ -45,7 +45,7 @@ export class MainInfoComponent implements OnInit {
     this._interactionService.getRating(this.user._id).subscribe(response => {
       
       if(response){
-        this.rating = response.promedio;
+        this.rating = response.promedio == 0 ? 1 : response.promedio;
         console.log('cargarRating Rating:  ' + this.rating);
         this.selectedValue = this.rating;
       }
