@@ -39,6 +39,7 @@ import { ComunicationService } from './services/comunication.service';
 import { UserJobsServices } from './services/user.jobs.service';
 import { UserProductsService } from './services/user.products.service';
 import { UserServicesService } from './services/user.services.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 
@@ -83,7 +84,8 @@ import { UserServicesService } from './services/user.services.service';
     ComunicationService,
     UserJobsServices,
     UserProductsService,
-    UserServicesService
+    UserServicesService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

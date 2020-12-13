@@ -1,6 +1,6 @@
 //Modulos
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 //import { MomentModule } from 'angular2-moment'
 
@@ -34,7 +34,8 @@ import { UserServices } from '../../services/user.service';
         MainComponent
     ],
     providers: [
-        UserServices
+        UserServices,
+        { provide: LocationStrategy, useClass: HashLocationStrategy }
     ]
 })
-export class SearchPageModule {}
+export class SearchPageModule { }

@@ -1,9 +1,9 @@
 //Modulos
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { MomentModule } from 'angular2-moment'
- 
+
 //Modulos extras
 import { GeneralModule } from '../../modules/app.general.module';
 
@@ -44,7 +44,8 @@ import { MainEditComponent } from './main-edit/main-edit.component';
         MainEditComponent
     ],
     providers: [
-        UserServices
+        UserServices,
+        { provide: LocationStrategy, useClass: HashLocationStrategy }
     ]
 })
 export class EditProfileModule { }
