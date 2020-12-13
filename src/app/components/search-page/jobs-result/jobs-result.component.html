@@ -1,11 +1,14 @@
 <div class="container">
     <div class="k-container-jobs">
+        <div *ngIf="this.numbers.length == 0">
+            <h5>No hay resultados que mostrar.</h5>
+        </div>
         <div *ngFor="let element of this.resultJobs" class="card text-center mb-2">
             <div class="card-body mt-3">
                 <div class="row">
                     <div class="col-md-2 col-12">
                         <!-- <img src="../../../../assets/img/user.png" class="k-profile-avatar" alt=""> -->
-                        <img src="{{url+'get-image-profile/'+this.element.user.image}}" class="k-profile-avatar" alt="">
+                        <img src="{{this.element.user.image[0].url}}" class="k-profile-avatar" alt="">
                     </div>
                     <div class="col-md-5 col-12 text-left">
                         <h3>{{ element.user.name + ' ' + element.user.surname }}</h3>
@@ -19,7 +22,6 @@
                                 {{ trabajo.jobs.name }}<span class="d-inline"
                                     *ngIf="element.trabajos.length > 1 && !isLast"> | </span></p>
                         </div>
-
                         <input (click)="profileJobs(this.element.user._id)" type="button" class="btn btn-dark mt-3"
                             value="Ver más">
                     </div>

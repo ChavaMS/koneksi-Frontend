@@ -41,7 +41,7 @@
             [ngClass]="{active:isFirst}">
             <img *ngIf="!item.image" src="../../../assets/img/banner.jpg" class="k-img-products d-block w-100 h-100"
                 alt="...">
-            <img *ngIf="item.image" src="{{url+'get-product-image/'+item.image}}"
+            <img *ngIf="item.image" src="{{item.image[0].url}}"
                 class="k-img-products d-block w-100 h-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>{{i}}</h5>

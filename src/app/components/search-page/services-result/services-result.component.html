@@ -8,8 +8,7 @@
         <div class="row">
           <div class="col-md-2 col-12">
             <img *ngIf="!service.user.image" src="../../../../assets/img/user.png" class="k-profile-avatar" alt="">
-            <img *ngIf="service.user.image" src="{{ url + 'get-image-profile/' + service.user.image }}"
-              class="k-profile-avatar" alt="">
+            <img *ngIf="service.user.image" src="{{service.user.image[0].url }}" class="k-profile-avatar" alt="">
           </div>
           <div class="col-md-8 col-12 text-left">
             <h3>{{ service.user.name + ' ' + service.user.surname }}</h3>
@@ -30,7 +29,7 @@
       <div class="card-footer">
         <div class="card-deck ">
           <div class="card k-card " *ngFor="let image of service.images">
-            <img src="{{ url + 'get-service-image/' + image }}" class="card-img-top k-image-product" alt="...">
+            <img src="{{image.url }}" class="card-img-top k-image-product" alt="...">
           </div>
           <input class="btn btn-dark" type="button" [routerLink]="['/user-service/' + service.user._id]"
             value="Ver más">

@@ -26,7 +26,7 @@
         <li *ngIf="identity" class="nav-item dropdown  dropleft">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <img *ngIf="identity.image" class="k-avatar" src="{{url+'get-image-profile/'+identity.image}}" alt="">
+            <img *ngIf="identity.image" class="k-avatar" src="{{identity.image[0].url}}" alt="">
             <img *ngIf="!identity.image" class="k-avatar" src="../assets/img/user.png" alt="">
             <span>{{identity.name}}</span>
           </a>

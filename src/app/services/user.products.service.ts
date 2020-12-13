@@ -20,16 +20,48 @@ export class UserProductsService {
     }
 
 
+    getToken() {
+        let token = localStorage.getItem('token');
+
+        if (token != 'undefined') {
+            this.token = token;
+        } else {
+            this.token = null;
+        }
+
+        return this.token;
+    }
+
+    getUserProducts(id): Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', this.getToken());
+
+        return this._http.post(this.url + 'get-products/' + id, { headers: headers });
+    }
+
+
+    updateUserProducts(id, userProducts): Observable<any> {
+        let params = JSON.stringify(userProducts);
+        let headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', this.getToken());
+
+        return this._http.put(this.url + 'update-product/' + id, params, { headers: headers });
+    }
+
+    deleteProducts(id): Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', this.getToken());
+
+        return this._http.delete(this.url + 'deleteProduct/' + id, { headers: headers });
+    }
+
     saveUserProducts(userProducts, files, user): Observable<any> {
         const fd = new FormData();
         console.log(files);
-        
+
         if (Array.isArray(userProducts)) {
             let i = 0;
             userProducts.forEach(element => {
 
                 console.log(files[i]);
-                
+
                 fd.append('name', element.name);
                 fd.append('description', element.description);
                 fd.append('tags', element.tags);

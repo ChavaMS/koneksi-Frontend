@@ -14,6 +14,8 @@ export class LocationEditComponent implements OnInit {
   public postalCode: string;
   public identity;
   public userLocationInfo: UserLocationInfo;
+  public message: string;
+
   constructor(
     private _userService: UserServices
   ) {
@@ -39,6 +41,7 @@ export class LocationEditComponent implements OnInit {
 
     this._userService.updateLocation(this.userLocationInfo).subscribe(response => {
       if (response) {
+        this.message = "Inicia sesión de nuevo para ver los cambios";
         console.log(response);
       }
     }, err => {

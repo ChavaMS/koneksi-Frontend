@@ -1,9 +1,9 @@
 <img class="img-fluid" *ngIf="!this.user.cover_page" src="../../../../assets/img/banner.jpg" alt="">
-<img class="img-fluid" *ngIf="this.user.cover_page" src="{{ url + 'get-image-cover/' + this.user.cover_page }}" alt="">
+<img class="img-fluid" *ngIf="this.user.cover_page" src="{{this.user.cover_page[0].url }}" alt="">
 <div class="row">
     <div class="col-md-4 text-center">
         <img *ngIf="!this.user.image" src="../../../../assets/img/user.png" class="k-profile-avatar" alt="">
-        <img *ngIf="this.user.image" src="{{url+'get-image-profile/'+this.user.image}}" class="k-profile-avatar" alt="">
+        <img *ngIf="this.user.image" src="{{this.user.image[0].url}}" class="k-profile-avatar" alt="">
     </div>
     <div class="text-center col-md-5 p-0 mt-4">
         <p class="k-profile-name">{{this.user.name + " " + this.user.surname}}</p>
@@ -18,7 +18,7 @@
                 </ul>
             </div>
             <div>
-                <!-- chava buapo aqui va el modal para mostrar la info del usuario --> 
+                <!-- chava buapo aqui va el modal para mostrar la info del usuario -->
             </div>
         </div>
     </div>

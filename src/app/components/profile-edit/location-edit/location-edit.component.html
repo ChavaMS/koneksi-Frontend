@@ -1,9 +1,14 @@
 <div class="container">
     <div class="k-container-register mx-auto">
-        <h2 class="mt-5">Ingrese sus datos:</h2>
+        <h2 class="mt-5 w-100 text-center">Datos de ubicación</h2>
         <span *ngIf="this.status" class="my-4  alert alert-danger">
             {{ this.status }}
         </span>
+        <div class="my-4 w-100 text-center">
+            <span *ngIf="this.message" class="my-4 alert alert-success w-100 text-center">
+                {{this.message}}
+            </span>
+        </div>
         <form #locationUserForm="ngForm" (submit)="updateUserLocation()">
             <h5>Dirección</h5>
             <div class="form-group">
@@ -24,18 +29,18 @@
             <h5>Ingresa uno o todos los datos para calcular una nueva ubicación aproximada</h5>
             <div class="form-group">
                 <label for="calle">Calle:</label>
-                <input name="calle" #calle="ngModel" [(ngModel)]="this.userLocationInfo.street" type="text" required class="form-control"
-                    id="calle" aria-describedby="Ciudad">
+                <input name="calle" #calle="ngModel" [(ngModel)]="this.userLocationInfo.street" type="text" required
+                    class="form-control" id="calle" aria-describedby="Ciudad">
             </div>
             <div class="form-group">
                 <label for="colonia">Colonia:</label>
-                <input name="colonia" #colonia="ngModel" [(ngModel)]="this.userLocationInfo.suburb" type="text" class="form-control"
-                    id="colonia" aria-describedby="Ciudad">
+                <input name="colonia" #colonia="ngModel" [(ngModel)]="this.userLocationInfo.suburb" type="text"
+                    class="form-control" id="colonia" aria-describedby="Ciudad">
             </div>
             <div class="form-group">
                 <label for="cp">Código postal:</label>
-                <input name="cp" #cp="ngModel" [(ngModel)]="this.userLocationInfo.cp" type="text" class="form-control" id="cp"
-                    aria-describedby="Ciudad">
+                <input name="cp" #cp="ngModel" [(ngModel)]="this.userLocationInfo.cp" type="text" class="form-control"
+                    id="cp" aria-describedby="Ciudad">
             </div>
         </form>
     </div>

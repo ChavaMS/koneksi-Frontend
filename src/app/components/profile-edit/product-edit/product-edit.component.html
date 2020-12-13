@@ -1,3 +1,104 @@
-<div class="container">
-    
+<div class="container k-container-products text-center">
+    <h2 class="text-center mb-5">Productos</h2>
+    <div class="mt-5 mb-4 w-100 text-center">
+        <span *ngIf="this.error && this.error != ''" class="alert alert-danger">
+            {{ this.error }}
+        </span>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 text-center">
+            <div [formGroup]="formProducts">
+                <div formArrayName="formA">
+                    <div class="form" *ngFor="let product of formArray.controls; let i = index;">
+                        <div [formGroupName]="i">
+                            <div class="form-row">
+                                <div class="col-2 my-auto">
+                                    <input (change)="activar(i)" type="text" formControlName="name" class="form-control" name="name"
+                                        placeholder="Nombre">
+                                </div>
+                                <div class="col-8">
+                                    <textarea name="description" id="{{i}}" cols="30" rows="5"
+                                        formControlName="description" class="form-control"
+                                        placeholder="Descripción" (change)="activar(i)"></textarea>
+                                </div>
+                                <div class="col">
+                                    <div class=" my-auto h-100 d-flex align-items-center">
+                                        <button class="btn btn-danger"
+                                            (click)="deleteForm(i)">Borrar</button>
+                                        <button class="btn btn-success"
+                                            (click)="updateInfo(i)" *ngIf="this.isActive[i]">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mt-2">
+                                <div class="col-2"></div>
+                                <div class="col">
+                                    <input type="number" (change)="activar(i)" class="form-control" name="price" formControlName="price"
+                                        placeholder="Precio">
+                                </div>
+                                <div class="col">
+                                    <input type="text" (change)="activar(i)" name="tags" formControlName="tags" class="form-control"
+                                        placeholder="Etiqueta1, etiqueta2, etc">
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="w-100 text-center">
+            <button class="btn btn-dark my-3" (click)="addProduct()">Agregar productos</button>
+        </div>
+        <div class="col-12" *ngIf="this.formProductsUpdate">
+            <div [formGroup]="formProductsUpdate">
+                <div formArrayName="formB">
+                    <div class="form" *ngFor="let product of formArrayExtra.controls; let i = index;">
+                        <div [formGroupName]="i">
+                            <div class="form-row">
+                                <div class="col-2 my-auto">
+                                    <input type="text" formControlName="name" class="form-control" name="name"
+                                        placeholder="Nombre">
+                                </div>
+                                <div class="col-8">
+                                    <textarea name="description" id="{{i}}" cols="30" rows="5"
+                                        formControlName="description" class="form-control"
+                                        placeholder="Descripción"></textarea>
+                                </div>
+                                <div class="col">
+                                    <div class=" my-auto h-100 d-flex align-items-center">
+                                        <button class="btn btn-danger"
+                                            (click)="deleteFormExtra(i)">Borrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mt-2">
+                                <div class="col-2"></div>
+                                <div class="col">
+                                    <input type="number" class="form-control" name="price" formControlName="price"
+                                        placeholder="Precio">
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="tags" formControlName="tags" class="form-control"
+                                        placeholder="Etiqueta1, etiqueta2, etc">
+                                </div>
+                                <div class="col">
+                                    <input type="file" (change)="onPhotoSelected($event,i)" formControlName="image"
+                                        class="form-control-file" placeholder="Imagen">
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button *ngIf="formArrayExtra.controls.length > 0" (click)="guardar()" class="btn btn-success">Guardar</button>
+        </div>
+
+    </div>
 </div>

@@ -19,6 +19,7 @@ export class UserEditComponent implements OnInit {
   public identity;
   public files;
   public userGeneralInfo: UserGeneralInfo;
+  public message: string;
 
   constructor(
     private _userService: UserServices,
@@ -49,7 +50,7 @@ export class UserEditComponent implements OnInit {
     if (this.files[0]) {
       this._userService.updateAvatar(this.identity.email, this.files[0]).subscribe(response => {
         if (response) {
-          //PONER RESPUESTA
+          this.message = "Inicia sesión de nuevo para ver los cambios";
         }
       }, error => {
 
@@ -60,7 +61,7 @@ export class UserEditComponent implements OnInit {
     if (this.files[1]) {
       this._userService.updateCoverPage(this.identity.email, this.files[1]).subscribe(response => {
         if (response) {
-          //PONER RESPUESTA
+          this.message = "Inicia sesión de nuevo para ver los cambios";
         }
       }, error => {
 
@@ -70,7 +71,7 @@ export class UserEditComponent implements OnInit {
 
     this._userService.updateUser(this.userGeneralInfo).subscribe(response => {
       if (response) {
-        //PONER RESPUESTA
+        this.message = "Inicia sesión de nuevo para ver los cambios";
       }
     }, error => {
 
@@ -82,6 +83,8 @@ export class UserEditComponent implements OnInit {
       this.files[index] = <File>event.target.files[0];
     }
   }
+
+
 
 }
 

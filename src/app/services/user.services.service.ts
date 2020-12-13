@@ -13,10 +13,12 @@ export class UserServicesService {
     public identity;
     public token;
     public stats;
+    public do: DeleteObject;
 
     constructor(
         public _http: HttpClient
     ) {
+        this.do = new DeleteObject('','');
         this.url = GLOBAL.url;
     }
 
@@ -49,6 +51,51 @@ export class UserServicesService {
 
     getOneUserService(id): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.get(this.url + 'get-user-services/' + id , { headers: headers });
+        return this._http.get(this.url + 'get-user-services/' + id, { headers: headers });
+    }
+
+    deletePhoto(id, image): Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+        this.do.id = image.id;
+        this.do.url = image.image;
+        let params = JSON.stringify(this.do);
+
+        return this._http.put(this.url + 'delete-photo/' + id, params , { headers: headers });
+    }
+
+    updateMainInfoUserService(id, userService): Observable<any> {
+        let params = JSON.stringify(userService);
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this._http.post(this.url + 'updateUserServices/' + id, params, { headers: headers });
+    }
+
+    saveImages(id, files): Observable<any> {
+        const fd = new FormData();
+        console.log(files);
+
+        if (Array.isArray(files)) {
+            let i = 0;
+            files.forEach(element => {
+                fd.append('services', files[i++]);
+            });
+        } else {
+            fd.append('services', files);
+        }
+
+        fd.append('id', id);
+
+        return this._http.put(this.url + 'update-images', fd);
+    }
+
+
+}
+
+export class DeleteObject {
+    constructor(
+        public id: string,
+        public url: string
+    ) {
+
     }
 }
