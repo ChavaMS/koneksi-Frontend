@@ -10,6 +10,7 @@ import { EditProfileModule } from './components/profile-edit/edit-profile.module
 import { GeneralModule } from './modules/app.general.module';
 
 //Componentes
+import { HomeComponent } from './components/home/home.component';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserProductsComponent } from './components/user-products/user-products.component';
@@ -58,7 +59,8 @@ import { UserServicesService } from './services/user.services.service';
     RegisterUserJobsComponent,
     RegisterJobsComponent,
     RegisterUserProductsComponent,
-    RegisterUserServiceComponent
+    RegisterUserServiceComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,24 @@ export class SearchService {
         this.url = GLOBAL.url;
     }
 
+    getRandomJobs(): Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+        return this._http.post(this.url + 'randomUserJobs/', { headers: headers });
+    }
+
+    getRandomServices(): Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+        return this._http.post(this.url + 'randomUserServices/', { headers: headers });
+    }
+
+    getRandomProducts(): Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+        return this._http.post(this.url + 'randomUserProducts/', { headers: headers });
+    }
+
     getProducts(page = 1): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
 

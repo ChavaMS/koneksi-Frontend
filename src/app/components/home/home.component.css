@@ -1,0 +1,1137 @@
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+/* Document
+   ========================================================================== */
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+
+ html {
+    line-height: 1.15; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+  }
+  
+  /* Sections
+     ========================================================================== */
+  
+  /**
+   * Remove the margin in all browsers.
+   */
+  
+  body {
+    margin: 0;
+  }
+  
+  /**
+   * Render the `main` element consistently in IE.
+   */
+  
+  main {
+    display: block;
+  }
+  
+  /**
+   * Correct the font size and margin on `h1` elements within `section` and
+   * `article` contexts in Chrome, Firefox, and Safari.
+   */
+  
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }
+  
+  /* Grouping content
+     ========================================================================== */
+  
+  /**
+   * 1. Add the correct box sizing in Firefox.
+   * 2. Show the overflow in Edge and IE.
+   */
+  
+  hr {
+    box-sizing: content-box; /* 1 */
+    height: 0; /* 1 */
+    overflow: visible; /* 2 */
+  }
+  
+  /**
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
+  
+  pre {
+    font-family: monospace, monospace; /* 1 */
+    font-size: 1em; /* 2 */
+  }
+  
+  /* Text-level semantics
+     ========================================================================== */
+  
+  /**
+   * Remove the gray background on active links in IE 10.
+   */
+  
+  a {
+    background-color: transparent;
+  }
+  
+  /**
+   * 1. Remove the bottom border in Chrome 57-
+   * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+   */
+  
+  abbr[title] {
+    border-bottom: none; /* 1 */
+    text-decoration: underline; /* 2 */
+    text-decoration: underline dotted; /* 2 */
+  }
+  
+  /**
+   * Add the correct font weight in Chrome, Edge, and Safari.
+   */
+  
+  b,
+  strong {
+    font-weight: bolder;
+  }
+  
+  /**
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
+  
+  code,
+  kbd,
+  samp {
+    font-family: monospace, monospace; /* 1 */
+    font-size: 1em; /* 2 */
+  }
+  
+  /**
+   * Add the correct font size in all browsers.
+   */
+  
+  small {
+    font-size: 80%;
+  }
+  
+  /**
+   * Prevent `sub` and `sup` elements from affecting the line height in
+   * all browsers.
+   */
+  
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  
+  sub {
+    bottom: -0.25em;
+  }
+  
+  sup {
+    top: -0.5em;
+  }
+  
+  /* Embedded content
+     ========================================================================== */
+  
+  /**
+   * Remove the border on images inside links in IE 10.
+   */
+  
+  img {
+    border-style: none;
+  }
+  
+  /* Forms
+     ========================================================================== */
+  
+  /**
+   * 1. Change the font styles in all browsers.
+   * 2. Remove the margin in Firefox and Safari.
+   */
+  
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 1 */
+    line-height: 1.15; /* 1 */
+    margin: 0; /* 2 */
+  }
+  
+  /**
+   * Show the overflow in IE.
+   * 1. Show the overflow in Edge.
+   */
+  
+  button,
+  input { /* 1 */
+    overflow: visible;
+  }
+  
+  /**
+   * Remove the inheritance of text transform in Edge, Firefox, and IE.
+   * 1. Remove the inheritance of text transform in Firefox.
+   */
+  
+  button,
+  select { /* 1 */
+    text-transform: none;
+  }
+  
+  /**
+   * Correct the inability to style clickable types in iOS and Safari.
+   */
+  
+  button,
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    -webkit-appearance: button;
+  }
+  
+  /**
+   * Remove the inner border and padding in Firefox.
+   */
+  
+  button::-moz-focus-inner,
+  [type="button"]::-moz-focus-inner,
+  [type="reset"]::-moz-focus-inner,
+  [type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+  }
+  
+  /**
+   * Restore the focus styles unset by the previous rule.
+   */
+  
+  button:-moz-focusring,
+  [type="button"]:-moz-focusring,
+  [type="reset"]:-moz-focusring,
+  [type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+  }
+  
+  /**
+   * Correct the padding in Firefox.
+   */
+  
+  fieldset {
+    padding: 0.35em 0.75em 0.625em;
+  }
+  
+  /**
+   * 1. Correct the text wrapping in Edge and IE.
+   * 2. Correct the color inheritance from `fieldset` elements in IE.
+   * 3. Remove the padding so developers are not caught out when they zero out
+   *    `fieldset` elements in all browsers.
+   */
+  
+  legend {
+    box-sizing: border-box; /* 1 */
+    color: inherit; /* 2 */
+    display: table; /* 1 */
+    max-width: 100%; /* 1 */
+    padding: 0; /* 3 */
+    white-space: normal; /* 1 */
+  }
+  
+  /**
+   * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+   */
+  
+  progress {
+    vertical-align: baseline;
+  }
+  
+  /**
+   * Remove the default vertical scrollbar in IE 10+.
+   */
+  
+  textarea {
+    overflow: auto;
+  }
+  
+  /**
+   * 1. Add the correct box sizing in IE 10.
+   * 2. Remove the padding in IE 10.
+   */
+  
+  [type="checkbox"],
+  [type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+  }
+  
+  /**
+   * Correct the cursor style of increment and decrement buttons in Chrome.
+   */
+  
+  [type="number"]::-webkit-inner-spin-button,
+  [type="number"]::-webkit-outer-spin-button {
+    height: auto;
+  }
+  
+  /**
+   * 1. Correct the odd appearance in Chrome and Safari.
+   * 2. Correct the outline style in Safari.
+   */
+  
+  [type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    outline-offset: -2px; /* 2 */
+  }
+  
+  /**
+   * Remove the inner padding in Chrome and Safari on macOS.
+   */
+  
+  [type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  
+  /**
+   * 1. Correct the inability to style clickable types in iOS and Safari.
+   * 2. Change font properties to `inherit` in Safari.
+   */
+  
+  ::-webkit-file-upload-button {
+    -webkit-appearance: button; /* 1 */
+    font: inherit; /* 2 */
+  }
+  
+  /* Interactive
+     ========================================================================== */
+  
+  /*
+   * Add the correct display in Edge, IE 10+, and Firefox.
+   */
+  
+  details {
+    display: block;
+  }
+  
+  /*
+   * Add the correct display in all browsers.
+   */
+  
+  summary {
+    display: list-item;
+  }
+  
+  /* Misc
+     ========================================================================== */
+  
+  /**
+   * Add the correct display in IE 10+.
+   */
+  
+  template {
+    display: none;
+  }
+  
+  /**
+   * Add the correct display in IE 10.
+   */
+  
+  [hidden] {
+    display: none;
+  }
+  html {
+    font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.6rem;
+    background-color: #50b9ff;
+}
+
+
+/** Globales **/
+
+img {
+    max-width: 100%;
+}
+
+.contenedor {
+    /* max-width: 120rem;
+    width: 95%; */
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .contenedor {
+        max-width: 120rem;
+        width: 95%;
+    }
+}
+
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 3.4rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+h4 {
+    font-size: 2.6rem;
+}
+
+
+/** Utilidades **/
+
+.seccion {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.centrar-texto {
+    text-align: center;
+}
+
+.contenido-centrado {
+    max-width: 800px;
+}
+
+.texto-derecha {
+    text-align: end;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.f-white {
+    color: white;
+}
+
+.d-block {
+    display: block!important;
+}
+
+.radio-imagen {
+    border-top-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+
+/** Botones **/
+
+.boton {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.8rem;
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    border-radius: 1rem;
+}
+
+.boton:hover {
+    cursor: pointer;
+}
+
+.boton-azul {
+    background-color: #1c12a5;
+}
+
+.boton-azul:hover {
+    background-color: #4d41f7;
+}
+
+.contenedor-boton {
+    margin-top: 0;
+    padding: 0 2rem 2rem 2rem;
+    max-height: 4rem;
+}
+
+
+/** Header **/
+
+.site-header {
+    background-color: #404449;
+    padding: 1rem 0 3rem 0;
+}
+
+.site-header.inicio {
+    background-image: url(../../../assets/img/inicio.jpg);
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    /* min-height: 60rem; */
+}
+
+@media (min-width: 768px) {
+    .site-header.inicio {
+        /* background-image: url(../img/inicio.png);
+        background-position: center center;
+        background-size: cover; */
+        height: 100vh;
+        min-height: 60rem;
+    }
+}
+
+.contenido-header {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contenido-header h1 {
+    color: white;
+    padding-bottom: 2rem;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 300;
+}
+
+.barra {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    column-gap: 2rem;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+.barra img {
+    width: 20rem;
+}
+
+@media (min-width: 768px) {
+    .barra {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+    }
+}
+
+
+/** Navegacion **/
+
+@media (max-width: 768px) {
+    .navegacion {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 1.5rem;
+        text-align: center;
+    }
+}
+
+.navegacion a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 2rem;
+    margin-right: 2rem;
+}
+
+.navegacion a:hover {
+    color: #05c7f2;
+}
+
+.navegacion a:last-of-type {
+    margin: 0;
+}
+
+
+/** Bienvenida **/
+
+@media (min-width: 768px) {
+    .bienvenida {
+        height: 100vh;
+        margin-top: 0!important;
+    }
+}
+
+.contenido-bienvenida {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.contenido-bienvenida h2 {
+    font-size: 4rem;
+    font-weight: 300;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .contenido-bienvenida h2 {
+        font-size: 7rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .contenido-bienvenida h2::after {
+        content: '';
+        display: block;
+        width: 74rem;
+        height: 0.7rem;
+        background-color: #05f2f2;
+        margin-top: 1rem;
+        position: absolute;
+        left: 22.9rem;
+    }
+}
+
+.contenido-bienvenida p {
+    font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+    .contenido-bienvenida p {
+        font-size: 3rem;
+    }
+}
+
+.frase {
+    margin-top: 5rem;
+    padding: 2rem;
+    background-color: #001a75;
+    border-radius: 1.8rem;
+}
+
+.frase blockquote {
+    font-size: 2.7rem;
+    font-weight: 300;
+}
+
+.frase p {
+    font-size: 2.1rem;
+    font-weight: 300;
+    font-style: italic;
+}
+
+
+/** Main - Producciones **/
+
+.producciones {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.contenedor-producciones {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.artista {
+    border: 3px solid rgba(0, 0, 0, 0.75);
+    background-color: rgba(211, 211, 211, 1);
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .contenedor-producciones {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .artista {
+        flex: 0 0 calc(20% - 1rem);
+        border: 3px solid rgba(0, 0, 0, 0.75);
+        background-color: rgba(211, 211, 211, 1);
+        margin: 0 1rem 1rem 2rem;
+    }
+}
+
+.contenido-producciones h2 {
+    color: white;
+    margin-bottom: 5rem;
+    font-size: 5rem;
+    font-weight: 300;
+}
+
+.artista h3 {
+    text-align: center;
+    font-size: 3.5rem;
+}
+
+.artista img {
+    width: 70rem;
+}
+
+.iconos-artista {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1;
+}
+
+.iconos-artista p {
+    margin-left: 2rem;
+    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 300;
+}
+
+.iconos-artista li {
+    display: flex;
+    align-items: center;
+}
+
+.iconos-artista li img {
+    width: 5rem;
+    height: 5rem;
+}
+
+
+/** Compañias **/
+
+.compañias h3 {
+    color: white;
+}
+
+.imagen-compañias {
+    background-image: url(../../../assets/img/user.png);
+    background-position: center center;
+    background-size: cover;
+    height: 65rem;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .imagen-compañias {
+        height: 40rem;
+    }
+}
+
+.contenido-compañias {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .contenido-compañias {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 4rem;
+    }
+}
+
+.imagen-compañia {
+    border-radius: 1rem;
+    width: 12rem;
+    margin: 2rem;
+}
+
+
+/** Destacado **/
+
+.destacado {
+    color: white;
+}
+
+.destacado h3 {
+    font-size: 5rem;
+    font-weight: 300;
+}
+
+@media (min-width: 768px) {
+    .contenido-destacado {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+iframe {
+    width: 320px;
+    height: 270px;
+}
+
+@media (min-width: 768px) {
+    iframe {
+        width: 660px;
+        height: 415px;
+    }
+}
+
+@media (min-width: 768px) {
+    .destacado-info {
+        margin-left: 3rem;
+    }
+}
+
+.destacado-info h4 {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.destacado-info p {
+    font-size: 2.5rem;
+}
+
+
+/** Inferior **/
+
+.seccion-inferior {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .seccion-inferior {
+        display: grid;
+        grid-template-columns: 60% 40%;
+        column-gap: 1rem;
+    }
+}
+
+.estadisticas img {
+    display: block;
+    margin: auto;
+    width: 16rem;
+}
+
+.estadisticas h4 {
+    text-align: center;
+}
+
+.comentario {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 1.5rem;
+    padding: 2rem;
+}
+
+.comentario p {
+    text-align: right;
+    font-style: italic;
+    color: #05c7f2;
+}
+
+.inferior-contacto {
+    margin-top: 2rem;
+    background-image: url(../../../assets/img/user.png);
+    background-position: center center;
+    background-size: cover;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .inferior-contacto {
+        margin-left: 2rem;
+    }
+}
+
+
+/** Footer **/
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #404449;
+    color: white;
+    text-align: center;
+    line-height: 0.4;
+}
+
+@media (min-width: 768px) {
+    .footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        padding: 2rem;
+    }
+}
+
+.redes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.redes a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    margin: auto;
+    width: 5rem;
+}
+
+
+/** Paginas internas **/
+
+.site-header.inicio-internas .barra a {
+    width: 10rem;
+}
+
+
+/** Nosotros **/
+
+.nosotros {
+    color: white;
+    margin-bottom: 6rem;
+}
+
+@media (min-width: 768px) {
+    .nosotros {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 2rem;
+    }
+}
+
+.nosotros .estadisticas img {
+    width: 8rem;
+}
+
+.nosotros .estadisticas h4 {
+    font-size: 3rem;
+    font-weight: 300;
+}
+
+@media (min-width: 768px) {
+    .nosotros .estadisticas h4 {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        line-height: 0;
+    }
+}
+
+.nosotros .contenido-nosotros h2 {
+    font-size: 4rem;
+    font-weight: 300;
+}
+
+.comentarios {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.comentarios h3 {
+    margin: 0;
+}
+
+.comentarios .comentario {
+    margin-top: 4rem;
+    max-width: 80rem;
+}
+
+.comentarios .comentario:last-of-type {
+    margin-bottom: 2rem;
+}
+
+
+/** Servicios **/
+
+.contenido-servicios {
+    color: white;
+}
+
+.plan {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-top-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .plan {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.plan .plan-imagen {
+    flex-basis: 40%;
+}
+
+.plan-imagen img {
+    width: 40rem;
+    border-top-left-radius: 2rem;
+}
+
+.plan .plan-contenido {
+    flex-basis: calc(60%);
+}
+
+.plan-contenido {
+    padding: 0 2rem 2rem 2rem;
+}
+
+@media (min-width: 768px) {
+    .plan-contenido {
+        padding: 0 5rem 0 0;
+    }
+}
+
+.plan-contenido h3 {
+    text-align: center;
+}
+
+.plan-info {
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+@media (min-width: 768px) {
+    .plan-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        max-height: 8rem;
+    }
+}
+
+.plan-info h4 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.plan-info p {
+    font-style: italic;
+    font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+    .plan-info h4 {
+        font-size: 2.5rem;
+    }
+    .plan-info p {
+        font-size: 2.5rem;
+    }
+}
+
+.plan-info span {
+    color: #05c7f2;
+}
+
+
+/** Produccion Individual **/
+
+.produccion {
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .produccion {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+    }
+}
+
+.escuchar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.escuchar img {
+    width: 3rem;
+    margin: 0 1rem;
+}
+
+
+/** Contacto **/
+
+.field {
+    margin-bottom: 2rem;
+}
+
+.contacto p {
+    font-size: 1.4rem;
+    color: white;
+    margin: 2rem 0 0.3;
+}
+
+legend {
+    font-size: 2rem;
+    color: white;
+}
+
+label {
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+input:not([type="submit"]),
+textarea,
+select {
+    padding: 1rem;
+    display: block;
+    width: 90%;
+    background-color: #e1e1e1;
+    margin-bottom: 2rem;
+    border: none;
+    border-radius: 1rem;
+}
+
+@media (min-width: 768px) {
+    input:not([type="submit"]),
+    textarea,
+    select {
+        width: 98%;
+    }
+}
+
+input[type="radio"] {
+    width: auto;
+    margin: 0;
+}
+
+select {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+textarea {
+    height: 200px;
+}
+
+.forma-contacto {
+    max-width: 30rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
