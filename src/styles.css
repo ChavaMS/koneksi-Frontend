@@ -58,15 +58,6 @@ footer {
     display: block !important;
 }
 
-@media (max-width: 1000px) {
-    .k-FormMobile{
-        display: block !important;
-    }
-
-    .k-FormFull{
-        display: none !important;
-    }
-}
 /*--------FOOTER-------*/
 .kf {
     padding: 30px;

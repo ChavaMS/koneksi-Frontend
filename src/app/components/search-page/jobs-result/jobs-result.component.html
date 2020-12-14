@@ -1,6 +1,6 @@
 <div class="container">
     <div class="k-container-jobs">
-        <div *ngIf="this.numbers.length == 0">
+        <div *ngIf="this.resultJobs && this.resultJobs.length == 0">
             <h5>No hay resultados que mostrar.</h5>
         </div>
         <div *ngFor="let element of this.resultJobs" class="card text-center mb-2">

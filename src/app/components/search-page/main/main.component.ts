@@ -43,7 +43,6 @@ export class MainComponent implements OnInit {
     
     this._comunicationService.sendSearchObject(this.search);
 
-
   }
 
 

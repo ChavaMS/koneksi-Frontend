@@ -73,6 +73,7 @@ export class JobsResultComponent implements OnInit {
           for (let i = 0; i < response.total; i++) {
             this.numbers[i] = (i + 1);
           }
+          
           //Carga rating y distancias
           this.getExtraContent();
 
@@ -99,6 +100,7 @@ export class JobsResultComponent implements OnInit {
         for (let i = 0; i < response.total; i++) {
           this.numbers[i] = (i + 1);
         }
+
         //Carga el contenido faltante de los oficios
         this.getExtraContent();
 

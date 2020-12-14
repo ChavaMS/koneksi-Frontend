@@ -16,7 +16,7 @@ import { RegisterUserServiceComponent } from './components/register/register-use
 import { HomeComponent } from './components/home/home.component';
 
 const appRoutes: Routes = [
-    { path: '', component: LoginComponent },
+    { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'user-products/:id', component: UserProductsComponent },
     { path: 'user-service/:id', component: UserServiceComponent },
