@@ -1,6 +1,6 @@
 <div class="k-navigation col-lg-12">
   <nav class=" py-0 navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" [routerLink]="['/login']"> <!-- LLEVAR A INICIO -->
+    <a class="navbar-brand" [routerLink]="['/home']">
       <img class="k-logo" src="../assets/img/Koneksi_Blanco.png" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -21,7 +21,7 @@
           <a class="nav-link" [routerLink]="['/register-election']"> Regístrate </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/login']"> Contáctanos </a> <!-- LLEVAR A PÁGINA DE CONTACTO DE EMRPESA -->
+          <a class="nav-link" href="https://koneksiapp.000webhostapp.com/"> Contáctanos </a> 
         </li>
         <li *ngIf="identity" class="nav-item dropdown  dropleft">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -51,7 +51,7 @@
   <footer class="mt-2 bg-dark">
     <div class="row p-4 k-footer w-95 m-auto">
       <div class="col-md-3 col-12 text-center">
-        <a href="#"> <!-- LLEVAR A PÁGINA DE LA EMPRESA -->
+        <a href="https://koneksiapp.000webhostapp.com/">
           <img class="k-logo-empresa" src="../assets/img/Logo_Empresa_Blanco.png" alt="">
         </a>
         <small>&copy; Copyright 2020, Koneksi Developers Company</small>
