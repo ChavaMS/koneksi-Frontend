@@ -29,6 +29,7 @@ export class RegisterUserServiceComponent implements OnInit {
     this.addImage();
   }
 
+  //-----------FORMULARIO REACTIVO-------------------------------
   createForm() {
     this.formServices = this.formBuilder.group({
       description: ['', Validators.required],
@@ -59,7 +60,9 @@ export class RegisterUserServiceComponent implements OnInit {
   deleteImage(id: number) {
     this.imagesArray.removeAt(id);
   }
+  //-----------FORMULARIO REACTIVO-------------------------------
 
+  //Metodo que encapsula la informacion
   onFormSubmit() {
     this.error = '';
 

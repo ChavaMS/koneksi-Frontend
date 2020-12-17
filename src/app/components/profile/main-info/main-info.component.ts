@@ -41,6 +41,7 @@ export class MainInfoComponent implements OnInit {
     this.cargarRating();
   }
 
+  //Metodo que carga el rating del usuario correspondiente
   cargarRating() {
     this._interactionService.getRating(this.user._id).subscribe(response => {
       
@@ -53,6 +54,7 @@ export class MainInfoComponent implements OnInit {
     });
   }
 
+  //Metodo que hace efecto al pasar el mouse por arriba de las estrellas
   efecto(indice: number) {
     var rating = new Array();
     rating[0] = document.getElementById("e1");
@@ -72,7 +74,7 @@ export class MainInfoComponent implements OnInit {
 
   }
 
-
+  //Metodo que sube el rating del usuario 
   subirRating(star) {
     this.selectedValue = star;
 
@@ -84,6 +86,7 @@ export class MainInfoComponent implements OnInit {
 
 }
 
+//Objeto que contiene el rating para ser enviado al backend 
 export class ObjetoRating {
     constructor(
       public userSaved: string,

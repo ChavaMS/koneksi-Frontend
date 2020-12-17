@@ -55,6 +55,7 @@ export class ServiceEditComponent implements OnInit {
 
   }
 
+  //Metodo que carga los datos del usuario 
   loadInfo() { 
     this._userServiceServices.getOneUserService(this.identity._id).subscribe(response => {
       console.log(response);
@@ -90,6 +91,7 @@ export class ServiceEditComponent implements OnInit {
     });
   }
 
+  //Metodo que actualiza los datos del usuario
   onFormSubmit() {
     this.userServiceUpda.description = this.formServices.value.description;
     this.userServiceUpda.tags = this.formServices.value.tags;
@@ -117,6 +119,7 @@ export class ServiceEditComponent implements OnInit {
 
   }
 
+  //En caso de ser agregadas mas imagenes, el metodo las guarda
   saveImages() {
     this._userServiceServices.saveImages(this.userService._id, this.files).subscribe(response => {
       if (response) {
@@ -127,12 +130,14 @@ export class ServiceEditComponent implements OnInit {
     });
   }
 
+  //Metodo que almacena las imagenes seleccionadas del usaurio
   onPhotoSelected(event: HtmlInputEvent, indice): void {
     if (event.target.files && event.target.files[0]) {
       this.files[indice] = (<File>event.target.files[0]);
     }
   }
 
+  /*------------FORMULARIO REACTIVO------------------------*/
   createForm() {
     this.formServices = this.formBuilder.group({
       description: [this.userService.description, Validators.required],
@@ -173,7 +178,7 @@ export class ServiceEditComponent implements OnInit {
       this.seleccionoImagen = false;
     }
   }
-
+  /*------------FORMULARIO REACTIVO------------------------*/
 
 }
 

@@ -62,9 +62,4 @@ export class UserJobsServices {
 
         return this.token;
     }
-
-
-
-
-
 }

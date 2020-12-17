@@ -62,6 +62,7 @@ export class RegisterUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //Metodo para regresar a la pestaña anterior
   goBack() {
     if (this.isUserProducts) {
       localStorage.removeItem('userProductsArray');
@@ -87,14 +88,15 @@ export class RegisterUserComponent implements OnInit {
     }
   }
 
+  //Metodo que acumula los archivos a subir
   public filesToUpload: Array<File>;
   fileChangeEvent(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
   }
 
+  //Metodo que crea un usuario
   createUser(): boolean {
     if (!(this.user.email != this.emailComp) || !(this.user.password != this.passwordComp)) {
-      console.log(this.files.length);
 
       if (this.files.length == 2) {
         let address = new Array();
@@ -111,7 +113,7 @@ export class RegisterUserComponent implements OnInit {
         } else {
           this.type = 'client';
         }
-        
+
         this.user.type = this.type;
 
         this._userService.registerUser(this.user, address, this.files[0]).subscribe(response => {
@@ -192,7 +194,7 @@ export class RegisterUserComponent implements OnInit {
                   localStorage.removeItem('isUserService');
 
                 }
-                
+
                 // Redirección
                 this._router.navigate(["login"]);
 
@@ -207,7 +209,7 @@ export class RegisterUserComponent implements OnInit {
         }, err => {
           if (err)
             this.status = "Ha ocurrido un error, puede que el usuario ya se haya registrado.";
-            this.scrollTop();
+          this.scrollTop();
 
         })
       } else {
@@ -224,13 +226,14 @@ export class RegisterUserComponent implements OnInit {
     return false;
   }
 
+  //Metodo que acumula las imagenes seleccionadas en este componente
   onPhotoSelected(event: HtmlInputEvent): void {
     if (event.target.files && event.target.files[0]) {
       this.files.push(<File>event.target.files[0]);
     }
   }
 
-  scrollTop(): void{
+  scrollTop(): void {
     if (this.status != null) {
       let scrollToTop = window.setInterval(() => {
         let pos = window.pageYOffset;

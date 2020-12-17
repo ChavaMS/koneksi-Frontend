@@ -2,7 +2,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-//import { MomentModule } from 'angular2-moment'
 
 //Modulos extras
 import { GeneralModule } from '../../modules/app.general.module';
@@ -22,7 +21,6 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { MainEditComponent } from './main-edit/main-edit.component';
 
 
-//import { UserGuard } from '../../services/user.guard';
 
 @NgModule({
     declarations: [

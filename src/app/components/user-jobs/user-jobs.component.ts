@@ -30,6 +30,7 @@ export class UserJobsComponent implements OnInit {
     
   }
 
+  //Obtiene el id de la url 
   loadPage() {
     this._route.params.subscribe(params => {
       let id = params['id'];
@@ -38,6 +39,7 @@ export class UserJobsComponent implements OnInit {
     });
   }
 
+  //Obtiene el usuario con ese id
   getUser(id) {
     this._userService.getUserJobs(id).subscribe(
       response => {

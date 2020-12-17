@@ -27,6 +27,7 @@ export class LocationEditComponent implements OnInit {
     this.initData();
   }
 
+  //Asigna los valores del usuario para cargar el mapa
   initData() {
     this.userLocationInfo.country = this.identity.country;
     this.userLocationInfo.state = this.identity.state;
@@ -36,9 +37,8 @@ export class LocationEditComponent implements OnInit {
     this.userLocationInfo._id = this.identity._id;
   }
 
+  //Método que actualiza los datos de ubicacion del usuario
   updateUserLocation() {
-    console.log(this.userLocationInfo);
-
     this._userService.updateLocation(this.userLocationInfo).subscribe(response => {
       if (response) {
         this.message = "Inicia sesión de nuevo para ver los cambios";

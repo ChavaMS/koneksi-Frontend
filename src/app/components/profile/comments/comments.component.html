@@ -55,7 +55,7 @@
     <div class="card k-card" *ngFor="let comment of this.comments">
         <div class="card-header p-2">
             <img *ngIf="!comment.emitter.image" src="../../../../assets/img/user.png" class="k-avatar" alt="">
-            <img *ngIf="comment.emitter.image" src="{{url+'get-image-profile/'+comment.emitter.image}}" class="k-avatar"
+            <img *ngIf="comment.emitter.image" src="{{comment.emitter.image[0].url}}" class="k-avatar"
                 alt="">
             {{ comment.emitter.name + ' ' + comment.emitter.surname }}
         </div>
@@ -82,18 +82,6 @@
 </div>
 
 <!--------------------------------------------PAGINACIÓN----------------------------------------------------->
-<!-- <div class="w-100 text-center" *ngIf="this.numbers">
-    <nav aria-label="..." class="mx-auto">
-        <ul class="pagination pagination-sm justify-content-center">
-          <li (click)="getComments(number)" *ngFor="let number of this.numbers; let isFirst = first" [ngClass]="{active:isFirst}" class="page-item" aria-current="page">
-            <span class="page-link k-link">
-              {{ number }}
-              <span *ngIf="isFirst" class="sr-only">(current)</span>
-            </span>
-          </li>
-        </ul>
-      </nav>
-</div> -->
 <div class="w-100 text-center" *ngIf="this.numbers">
     <nav aria-label="..." class="mx-auto">
         <ul class="pagination pagination-sm justify-content-center">

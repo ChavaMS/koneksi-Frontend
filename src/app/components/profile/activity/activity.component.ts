@@ -32,7 +32,7 @@ export class ActivityComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    //Se identifica el tipo usuario que se va a presentar
     if (this.isUserProducts) {
       this.activity = 'Productos';
     
@@ -46,6 +46,7 @@ export class ActivityComponent implements OnInit {
 
   }
 
+  //Habilita la pestaña de oficios
   cargarOficio(option: Number) {
     document.getElementById(this.selectAnterior.toString()).classList.add('d-none');
     document.getElementById(option.toString()).classList.remove('d-none');
@@ -53,6 +54,7 @@ export class ActivityComponent implements OnInit {
     this.selectAnterior = option.toString();
   }
 
+  //Cambia entre descripción e imagenes en productos
   cambiarVista(option: string) {
     if (option == 'des') {
       document.getElementById('productsUserProfile').classList.remove('d-block');
@@ -71,6 +73,7 @@ export class ActivityComponent implements OnInit {
     }
   }
 
+  //Cambia entre descripción e imagenes en servicios
   cambiarVistaServicios(option: string) {
     if (option == 'des') {
       document.getElementById('serviceUserProfile').classList.remove('d-block');

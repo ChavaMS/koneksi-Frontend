@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { of } from 'rxjs';
 import { UserJobs } from 'src/app/models/userJobs';
 import { UserJobsServices } from 'src/app/services/user.jobs.service';
 import { UserServices } from 'src/app/services/user.service';
@@ -43,6 +42,7 @@ export class JobsEditComponent implements OnInit {
     this.createForm();
   }
 
+  //Método que carga los elementos del oficio seleccionado
   initData() {
     this._userJobs.getUserJobs(this.identity._id).subscribe(response => {
       if (response) {
@@ -101,6 +101,7 @@ export class JobsEditComponent implements OnInit {
 
   }
 
+  //Método que borra un oficio del usuario
   deleteJob(index: number) {
     console.log('entra');
     console.log(this.userJobsArray[index]._id);
@@ -114,6 +115,7 @@ export class JobsEditComponent implements OnInit {
     });
   }
 
+  //Método que guarda un oficio nuevo
   saveJobs() {
     for (let i = 0; i < this.jobSelectedArray.length; i++) {
       this.userJobsForSaveArray.push(new UserJobs('', '', '', '', '', ''));
@@ -149,6 +151,7 @@ export class JobsEditComponent implements OnInit {
 
   }
 
+  //Método que actualiza un oficio del usuario
   guardar(index: number) {
     let horarios: string = '';
     if (this.schedule[index][0]) {
@@ -173,6 +176,7 @@ export class JobsEditComponent implements OnInit {
 
   }
 
+  /*------------METODOS PARA CONSTRUIR EL FORM REACTIVO DEL COMPONENTE--------*/
   createForm() {
     this.formProducts = this.formBuilder.group({
       formA: this.formBuilder.array([])
@@ -224,6 +228,7 @@ export class JobsEditComponent implements OnInit {
     }
 
   }
+   /*------------METODOS PARA CONSTRUIR EL FORM REACTIVO DEL COMPONENTE--------*/
 
 
 }

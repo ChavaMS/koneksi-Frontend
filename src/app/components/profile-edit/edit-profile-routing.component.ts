@@ -10,7 +10,6 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ServiceEditComponent } from './service-edit/service-edit.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 
-//import { UserGuard } from '../../services/user.guard';
 
 const editProfileRoutes: Routes = [
     {

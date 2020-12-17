@@ -44,6 +44,7 @@ export class ProductEditComponent implements OnInit {
 
   }
 
+  //Carga la informacion inicial de los productos
   loadInfo() {
     this._userProducts.getUserProducts(this.identiy._id).subscribe(response => {
       if (response) {
@@ -104,7 +105,7 @@ export class ProductEditComponent implements OnInit {
     });
   }
 
-  /*FORM PARA AGREGAR PRODUCTOS*/
+  /*--------------FORM PARA AGREGAR PRODUCTOS-----------------*/
   createFormExtra() {
     this.formProductsUpdate = this.formBuilderExtra.group({
       formB: this.formBuilderExtra.array([])
@@ -142,13 +143,16 @@ export class ProductEditComponent implements OnInit {
     this.formArrayExtra.removeAt(id);
     this.files[id] = null;
   }
+  /*--------------FORM PARA AGREGAR PRODUCTOS-----------------*/
 
+  //Método que acumula las fotos seleccionadas
   onPhotoSelected(event: HtmlInputEvent, indice): void {
     if (event.target.files && event.target.files[0]) {
       this.files[indice] = (<File>event.target.files[0]);
     }
   }
 
+  //Método que guarda el producto nuevo 
   guardar() {
     for (let i = 0; i < this.formProductsUpdate.value.formB.length; i++) {
       this.userProductsArray[i].description = this.formProductsUpdate.value.formB[i].description;

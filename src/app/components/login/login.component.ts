@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit {
   }
 
 
+  //Se mantiene le token para seguridad de los datos
   getToken() {
     this._userService.signup(this.user, 'true').subscribe(response => {
       if (response) {

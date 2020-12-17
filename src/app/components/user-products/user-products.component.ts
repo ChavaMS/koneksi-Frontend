@@ -27,6 +27,7 @@ export class UserProductsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //Obtiene la url de la ruta
   loadPage() {
     this._route.params.subscribe(params => {
       let id = params['id'];
@@ -34,6 +35,7 @@ export class UserProductsComponent implements OnInit {
     });
   }
 
+  //Obtiene al usuario de dicha url
   getUser(id) {
     this._userService.getUserProducts(id).subscribe(
       response => {

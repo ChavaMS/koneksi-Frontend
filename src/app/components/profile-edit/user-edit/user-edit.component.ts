@@ -38,6 +38,7 @@ export class UserEditComponent implements OnInit {
     }
   }
 
+  //Inicializa la informacion para ser mostrada
   initData() {
     this.userGeneralInfo.name = this.identity.name;
     this.userGeneralInfo.surname = this.identity.surname;
@@ -45,6 +46,7 @@ export class UserEditComponent implements OnInit {
     this.userGeneralInfo._id = this.identity._id;
   }
 
+  //Metodo que actualiza los valores del usuario
   updateUser() {
     console.log(this.files);
     if (this.files[0]) {
@@ -78,6 +80,7 @@ export class UserEditComponent implements OnInit {
     });
   }
 
+  //Método que acumula los archivos de imagen
   onPhotoSelected(event: HtmlInputEvent, index): void {
     if (event.target.files && event.target.files[0]) {
       this.files[index] = <File>event.target.files[0];

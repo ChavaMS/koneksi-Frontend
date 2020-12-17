@@ -32,12 +32,14 @@ export class RegisterUserJobsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //Metodo que regresa a la pestaña anterior
   goBack() {
     localStorage.removeItem('oficios');
     localStorage.removeItem('NombreOficios');
     this._router.navigate(['register-jobs']);
   }
 
+  //Metodo que encapsula 
   continuar(): boolean {
     this.error = '';
 
@@ -82,6 +84,7 @@ export class RegisterUserJobsComponent implements OnInit {
     return false;
   }
 
+  //Metodo que acumula el turno seleccionado por el usuario
   turno(turno: string, indice: number) {
     this.userJobsArray[indice].schedule.concat(turno);
   }

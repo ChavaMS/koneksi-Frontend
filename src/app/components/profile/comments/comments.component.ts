@@ -57,6 +57,7 @@ export class CommentsComponent implements OnInit {
     this.getComments(1);
   }
 
+  //Método que retorna los comentarios del usuario seleccionado
   getComments(page = 1) {
     this.comentario.receiver = this.receiver;
     this.comentario.activity_id = this.opcionSeleccionado;
@@ -88,11 +89,10 @@ export class CommentsComponent implements OnInit {
 
   }
 
+  //Metodo que crea el comentario
   onSubmit(form) {
     this.comentario.receiver = this.receiver;
     this.comentario.emitter = this._UserService.getIdentity()._id;
-
-    //console.log(this.comentario);
 
     this._InteractionsService.addComment(this.token, this.comentario).subscribe(response => {
       if (response) {
@@ -110,7 +110,4 @@ export class CommentsComponent implements OnInit {
     $('.collapse').collapse('toggle');
 
   }
-
-  
-
 }

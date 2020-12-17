@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Jobs } from 'src/app/models/jobs';
 import { UserJobsServices } from 'src/app/services/user.jobs.service';
 
 @Component({
@@ -34,6 +33,7 @@ export class RegisterJobsComponent implements OnInit {
     this.getJobs();
   }
 
+  //Manda los datos correspondientes al siguiente componente
   sendInfo() {
     localStorage.removeItem('oficios');
     localStorage.removeItem('NombreOficios');
@@ -43,15 +43,18 @@ export class RegisterJobsComponent implements OnInit {
     this._router.navigate(['register-user-jobs']);
   }
 
+  //Manda la seleccion al siguiente componente
   sendToPick() {
     localStorage.setItem('productService', 'true');
     this._router.navigate(['register-election']);
   }
 
+  //Retorna al componente anterior
   goBack(){
     this._router.navigate(['register-election']);
   }
 
+  //Obtiene el id del parametro
   getId(id: string, nombre: string) {
     let bandera = false;
     this.ids.forEach(element => {
@@ -70,6 +73,7 @@ export class RegisterJobsComponent implements OnInit {
 
   }
 
+  //Metodo que remueve un elemento de un arreglo
   removeItemFromArr(arr, item) {
     var i = arr.indexOf(item);
 
@@ -78,6 +82,8 @@ export class RegisterJobsComponent implements OnInit {
     }
   }
 
+
+  //Metodo que retorna los oficios de la base de datos
   getJobs() {
     this._userJobs.getJobs().subscribe(response => {
       if (response) {

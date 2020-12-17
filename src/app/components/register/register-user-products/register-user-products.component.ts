@@ -35,7 +35,7 @@ export class RegisterUserProductsComponent implements OnInit {
 
   }
 
-  /* ---------------------------------------------------- */
+  /* ----------------------FORMULARIO REACTIVO PARA PRODUCTOS----------------------- */
   createForm() {
     this.formProducts = this.formBuilder.group({
       formA: this.formBuilder.array([])
@@ -82,6 +82,7 @@ export class RegisterUserProductsComponent implements OnInit {
   }
 
 
+  //Metodo que encapsula la informacion para el siguiente componente
   continuar() {
     this.error = '';
     localStorage.removeItem('userProductsArray');
@@ -115,6 +116,7 @@ export class RegisterUserProductsComponent implements OnInit {
     this._router.navigate(['/register-user']);
   }
 
+  //Medodo que carga la pagina
   loadPage() {
     this._route.params.subscribe(params => {
       let number = params['number'];
