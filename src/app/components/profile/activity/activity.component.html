@@ -79,7 +79,7 @@
             [ngClass]="{active:isFirst}">
             <img *ngIf="!item" src="../../../assets/img/banner.jpg" class="k-img-products d-block w-100 h-100"
                 alt="...">
-            <img *ngIf="item" src="{{url+'get-service-image/'+item}}"
+            <img *ngIf="item" src="{{item.url}}"
                 class="k-img-products d-block w-100 h-100" alt="...">
         </div>
     </div>
